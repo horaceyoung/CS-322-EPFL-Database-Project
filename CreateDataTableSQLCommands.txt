@@ -44,19 +44,26 @@ CREATE TABLE Own_by
 
 CREATE TABLE Venue
 	(
-	listing_id INTEGER(10) NOT NULL
+	venue_id INTEGER(10) NOT NULL
 	 neighborhood VARCHAR(255) 
 	 city VARCHAR(255)
 	 country_code VARCHAR(255)
 	 latitude DOUBLE(20)
 	 longtitude DOUBLE(20)
-	 PRIMARY KEY(listing_id)
+	 PRIMARY KEY(venue_id)
+	)
+
+CREATE TABLE Located_at
+	(
+	venue_id INTEGER(10)
+	 listing_id INTEGER(10)
+	 PRIMARY KEY(venue_id)
+	 FOREIGN KEY(listing_id)
 	)
 
 CREATE TABLE Review
 	(
-	id INTERGER(10) NOT NULL
-	listing_id INTERGER(10) NOT NULL
+	review_id INTERGER(10) NOT NULL
 	date DATE NOT NULL
 	reviewer_id INTERGER(10) NOT NULL
 	reviewer_name VARCHAR(255) NOT NULL
@@ -67,29 +74,42 @@ CREATE TABLE Receives
 	(
 	listing_id INTEGER(10)
 	id INTEGER(10)
+	PRIMARY KEY(id) NOT NULL
+	FOREIGN KEY(listing_id)
+	)
+
+CREATE TABLE Score
+	(
+	score_id INTERGER(10)
 	review_scores_accuracy INTEGER(10) NOT NULL
 	review_scores_clean INTEGER(10) NOT NULL
 	reciew_scores_checkin INTERGER(10) NOT NULL
 	review_scores_communication INTERGER(10) NOT NULL
 	review_scores_location INTERGER(10) NOT NULL
 	review_scores_value INTERGER(10) NOT NULL
-	PRIMARY KEY(id) NOT NULL
-	FOREIGN KEY(listing_id)
 	)
 
 CREATE TABLE Policy
 	(
-	listing_id INTEGER(10) NOT NULL
+	policy_id INTEGER(10) NOT NULL
 	is_business_travel_ready BIT
 	cancellation_policy VARCHAR(255)
 	require_guest_profile_picture BIT
 	require_guest_phone_verification BIT
-	PRIMARY KEY(listing_id)
+	PRIMARY KEY(policy_id)
+	)
+
+CRETAE TABLE Has
+	(
+	policy_id INTEGER(10)
+	listing_id INTEGER(10)
+	PRIMARY KEY(policy_id)
+	FOREIGN KEY(listing_id)
 	)
 
 CREATE TABLE Price
 	(
-	listing_id INTEGER(10)
+	price_id INTEGER(10)
 	price FLOAT(10)
 	weekly_price FLOAT(10)
 	monthly_price FLOAT(10)
@@ -97,11 +117,20 @@ CREATE TABLE Price
 	cleaning_fee FLOAT(10)
 	guests_included INTEGER(10)
 	extra_people INTERGER(10)
+	PRIMARY KEY(price_id)
+	)
+
+CRETAE TABLE Incurs
+	(
+	price_id INTEGER(10)
+	listing_id INTEGER(10)
+	PRIMARY KEY(price_id)
+	FOREIGN KEY(listing_id)
 	)
 
 CREATE TABLE House_Details
 	(
-	listing_id INTEGER(10) NOT NULL
+	detail_id INTEGER(10) NOT NULL
 	property_type VARCHAR(255) NOT NULL
 	room-type VARCHAR(255) NOT NULL
 	accommodates VARCHAR(255) NOT NULL
@@ -111,4 +140,20 @@ CREATE TABLE House_Details
 	bed_type VARCHAR(255)
 	amenities VARCHAR(255)
 	square_feet INTEGER(10)
+	PRIMARY KEY(detail_id)
+	)
+
+CREATE TABLE Amenities
+	(
+	amenity_id INTERGER(10)
+	amenity_name varchar(255)
+	PRIMARY KEY(amenity_id)
+	)
+
+CREATE TABLE Contains
+	(
+	listing_id INTEGER(10)
+	amenitty_id INTEGER(10)
+	PRIMARY KEY(amenity_id)
+	FOREIGN KEY(listing_id)	
 	)

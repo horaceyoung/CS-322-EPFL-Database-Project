@@ -1,0 +1,225 @@
+neighbourhood id,neighbourhood name,city
+1,El Camp de l'Arpa del Clot,1
+2,La Sagrada Fam??lia,1
+3,El Poblenou,1
+4,Vila de Gr??cia,1
+5,El Baix Guinard??,1
+6,La Nova Esquerra de l'Eixample,1
+7,Camp d'en Grassot i Gr??cia Nova,1
+8,El Raval,1
+9,Dreta de l'Eixample,1
+10,El G??tic,1
+11,L'Antiga Esquerra de l'Eixample,1
+12,La Barceloneta,1
+13,Sant Pere/Santa Caterina,1
+14,El Bes??s i el Maresme,1
+15,El Poble-sec,1
+16,el Fort Pienc,1
+17,El Born,1
+18,Diagonal Mar - La Mar Bella,1
+19,Vallcarca i els Penitents,1
+20,Sants-Montju??c,1
+21,Sant Antoni,1
+22,El Clot,1
+23,Pedralbes,1
+24,Guinard??,1
+25,Sant Andreu de Palomar,1
+26,Proven??als del Poblenou,1
+27,Horta,1
+28,La Salut,1
+29,Sant Gervasi - Galvany,1
+30,Sant Mart?? de Proven??als,1
+31,Carmel,1
+32,Sarri??,1
+33,El Coll,1
+34,Gl??ries - El Parc,1
+35,Eixample,1
+36,La Vila Ol??mpica,1
+37,Vilapicina i la Torre Llobeta,1
+38,Almenara,1
+39,El Putget i Farr??,1
+40,El Congr??s i els Indians,1
+41,Porta,1
+42,La Latina,1
+43,Torre Bar??,1
+44,La Prosperitat,1
+45,Les Tres Torres,1
+46,Sant Gen??s dels Agudells,1
+47,La Font d'en Fargues,1
+48,Navas,1
+49,Les Corts,1
+50,La Maternitat i Sant Ramon,1
+51,La Sagrera,1
+52,La Guineueta - Canyelles,1
+53,La Teixonera,1
+54,Can Baro,1
+55,Sant Gervasi - la Bonanova,1
+56,Ciutat Vella,1
+57,Gr??cia,1
+58,La Verneda i La Pau,1
+59,La Vall d'Hebron,1
+60,Sant Mart??,1
+61,Horta-Guinard??,1
+62,Nou Barris,1
+63,Tur?? de la Peira - Can Peguera,1
+64,Montbau,1
+65,Verdum - Los Roquetes,1
+66,La Trinitat Vella,1
+67,El Bon Pastor,1
+68,Friedrichshain,1
+69,Trinitat Nova,3
+70,Sarri??-Sant Gervasi,3
+71,Sol,3
+72,Bar?? de Viver,3
+73,Charlottenburg,3
+74,Aluche,3
+75,Palos do Moguer,3
+76,Castellana,3
+77,Almagro,3
+78,Embajadores,3
+79,Trafalgar,3
+80,Kreuzberg,3
+81,Prenzlauer Berg,3
+82,Alt-Hohensch??nhausen,3
+83,Moabit,3
+84,Sch??neberg,3
+85,Wedding,3
+86,Mitte,3
+87,Neuk??lln,3
+88,Tempelhof,3
+89,Pankow,3
+90,Wilmersdorf,3
+91,Alt-Treptow,3
+92,Steglitz,3
+93,Potsdamer Platz,3
+94,Schmargendorf,3
+95,Reinickendorf,3
+96,Karlshorst,3
+97,K??penick,3
+98,Westend,3
+99,Altglienicke,3
+100,Halensee,3
+101,Lichterfelde,3
+102,Zehlendorf,3
+103,Mariendorf,3
+104,Lichtenberg,3
+105,Wittenau,3
+106,Friedrichsfelde,3
+107,Marzahn,3
+108,Bohnsdorf,3
+109,Biesdorf,3
+110,Grunewald,3
+111,Fennpfuhl,3
+112,Kaulsdorf,3
+113,Mahlsdorf,3
+114,Hermsdorf,3
+115,Hansaviertel,3
+116,Tiergarten,3
+117,Friedrichshagen,3
+118,Nikolassee,3
+119,Schm??ckwitz,3
+120,Rudow,3
+121,Wei??ensee,3
+122,Baumschulenweg,3
+123,Rahnsdorf,3
+124,Britz,3
+125,Friedenau,3
+126,Rummelsburg,3
+127,Johannisthal,3
+128,Tegel,3
+129,Siemensstadt,3
+130,Wannsee,3
+131,Charlottenburg-Nord,3
+132,Pl??nterwald,3
+133,Gropiusstadt,3
+134,Obersch??neweide,3
+135,Buch,3
+136,Franz??sisch Buchholz,3
+137,Lankwitz,3
+138,Niedersch??nhausen,3
+139,Niedersch??neweide,3
+140,Hellersdorf,3
+141,Wilhelmstadt,3
+142,Dahlem,3
+143,Gatow,3
+144,Karow,3
+145,Lichtenrade,3
+146,Neu-Hohensch??nhausen,3
+147,Kladow,3
+148,M??rkisches Viertel,3
+149,Marienfelde,3
+150,Gr??nau,3
+151,Falkenhagener Feld,3
+152,Heinersdorf,3
+153,Spandau,3
+154,Waidmannslust,3
+155,Blankenburg,3
+156,Staaken,3
+157,Heiligensee,3
+158,Buckow,3
+159,Frohnau,3
+160,Wilhelmsruh,4
+161,Falkenberg,4
+162,Adlershof,4
+163,Konradsh??he,4
+164,Hakenfelde,4
+165,M??ggelheim,4
+166,Haselhorst,4
+167,Jer??nimos,4
+168,Delicias,4
+169,L??bars,4
+170,Rosenthal,4
+171,Malasa??a,4
+172,Justicia,4
+173,Legazpi,4
+174,San Blas,4
+175,Palacio,4
+176,Cortes,4
+177,Recoletos,4
+178,Cuatro Caminos,4
+179,Ciudad Lineal,4
+180,Arapiles,4
+181,Fuencarral-el Pardo,4
+182,Villaverde,4
+183,Carabanchel,4
+184,Hortaleza,4
+185,Goya,4
+186,Pacifico,4
+187,Ciudad Jardin,4
+188,Fuente del Berro,4
+189,El Tr??ntaiseis,4
+190,Prosperidad,4
+191,Acacias,4
+192,Estrella,4
+193,El Viso,4
+194,Valdeacederas,4
+195,Hispanoam??rica,4
+196,Arg??elles,4
+197,Lista,4
+198,Chamber??,4
+199,Moratalaz,4
+200,Gaztambide,4
+201,Vallehermosa,4
+202,Ibiza,4
+203,Villa de Vallecas,4
+204,Rios Rosas,4
+205,Barajas,4
+206,Guindalera,4
+207,Usera,4
+208,Retiro,4
+209,Berruguete,4
+210,Puente de Vallecas,4
+211,Centro,4
+212,Arganzuela,4
+213,Adelfas,4
+214,Castillejos,4
+215,Imperial,4
+216,Tetu??n,4
+217,Moncloa,4
+218,Castilla,4
+219,Nueva Espa??a,4
+220,Vic??lvaro,4
+221,La Chopera,4
+222,Bellas Vistas,4
+223,Atocha,4
+224,Salamanca,4

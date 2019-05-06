@@ -13,16 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CS322_DB_interface
+namespace TabMenu2
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interação lógica para MainWindow.xam
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        //public mainwindow()
+        //{
+          //  initializecomponent();
+        //}
     }
 }

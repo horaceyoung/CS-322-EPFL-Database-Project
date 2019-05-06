@@ -1,12 +1,56 @@
-﻿<Window x:Class="CS322_DB_interface.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Window x:Class="NavigationDrawerPopUpMenu2.MainWindow"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CS322_DB_interface"
+        xmlns:local="clr-namespace:TabMenu2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid>
+        <Grid Height="60" VerticalAlignment="Top" Background="#FF9C27B0">
+            <TextBlock Text="CS-322 Airbnb Database Interface" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontFamily="Champagne &amp; Limousines" />
+            <Button HorizontalAlignment="Right" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}">
+                <materialDesign:PackIcon Kind="Power"/>
+            </Button>
+        </Grid>
         
+        <Grid Margin="0 60 0 0">
+            <dragablz:TabablzControl>
+                <dragablz:TabablzControl.InterTabController>
+                    <dragablz:InterTabController/>
+                </dragablz:TabablzControl.InterTabController>
+                <TabItem Header="Search">
+                    <TextBlock Text="Hello World!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    
+           
+                </TabItem>
+                
+                
+                <TabItem Header="Insert">
+                    <Grid>
+                        <TextBlock Text="Amazing designs!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Button Content="my button" VerticalAlignment="Bottom"></Button>
+                        <Button Content="Button" HorizontalAlignment="Left" Margin="500,87,0,0" VerticalAlignment="Top" Width="75"/>
+                    </Grid>
+                </TabItem>
+                
+                
+                <TabItem Header="Delete">
+                    <TextBlock Text="Ask for any question!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </TabItem>
+                <TabItem Header="Customise Query">
+                    <TextBlock Text="To submit self-defined query" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <materialDesign:PackIcon Kind="GithubCircle" Foreground="{DynamicResource PrimaryHueLightBrush}"/>
+                    </TabItem.Header>
+                    <TextBlock Text="github.com/Abel13/TabMenu2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </TabItem>
+                
+            </dragablz:TabablzControl>
+        </Grid>
     </Grid>
 </Window>

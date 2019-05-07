@@ -13,16 +13,35 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TabMenu2
+
+namespace Proj
 {
     /// <summary>
     /// Interação lógica para MainWindow.xam
     /// </summary>
     public partial class MainWindow : Window
     {
-        //public mainwindow()
-        //{
-          //  initializecomponent();
-        //}
+        public string[] table_names { get; set; }
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            table_names = new string[] { "Listing", "Host", "City", "Country", "Room Type", "Property Type" };
+
+            DataContext = this;
+        }
+
+        private void InsertTableOption_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch(InsertTableOption.SelectedItem.ToString()){
+                case "Listing":
+                    InsertListing.Visibility = Visibility.Visible;
+                    break;
+                    
+
+            }
+
+
+        }
     }
 }

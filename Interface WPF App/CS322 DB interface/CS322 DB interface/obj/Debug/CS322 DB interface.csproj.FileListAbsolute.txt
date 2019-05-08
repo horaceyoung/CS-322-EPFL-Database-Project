@@ -22,3 +22,27 @@ C:\Users\asus\Desktop\Hack\CS-322-EPFL-Database-Project\Interface WPF App\CS322 
 C:\Users\asus\Desktop\Hack\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\bin\Debug\MaterialDesignThemes.Wpf.xml
 C:\Users\asus\Desktop\Hack\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\App.baml
 C:\Users\asus\Desktop\Hack\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\CS322 DB interface.csproj.CopyComplete
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\bin\Debug\CS322 DB interface.exe.config
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\bin\Debug\CS322 DB interface.exe
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\bin\Debug\CS322 DB interface.pdb
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\bin\Debug\Dragablz.dll
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\bin\Debug\MaterialDesignColors.dll
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\bin\Debug\Dragablz.pdb
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\bin\Debug\Dragablz.xml
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\CS322 DB interface.csprojAssemblyReference.cache
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\MainWindow.g.cs
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\App.g.cs
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\CS322 DB interface_MarkupCompile.cache
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\CS322 DB interface_MarkupCompile.lref
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\App.baml
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\MainWindow.baml
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\CS322 DB interface.g.resources
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\CS322_DB_interface.Properties.Resources.resources
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\CS322 DB interface.csproj.GenerateResource.cache
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\CS322 DB interface.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\CS322 DB interface.csproj.CopyComplete
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\CS322 DB interface.exe
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\CS322 DB interface.pdb

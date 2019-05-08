@@ -53,7 +53,7 @@
 
                     <TabItem Header="Insert">
                         <StackPanel>
-                            <TextBlock Text="Input an ID to delete" Margin="80 60 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Text="Choose a table to insert" Margin="80 60 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15"/>
 
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -65,27 +65,165 @@
                                 <ComboBox x:Name="InsertTableOption" SelectionChanged="InsertTableOption_SelectionChanged" Padding="2" Margin="80 10 10 0" Grid.Column="0" ItemsSource="{Binding table_names}"/>
                             </Grid>
 
-                            <Grid x:Name="InsertListing" Visibility="Visible" Margin="30">
+                            <Grid x:Name="InsertListing" Visibility="Collapsed" Margin="20,20,70,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*" />
-                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="1*" />
                                     <ColumnDefinition Width="1*" />
                                     <ColumnDefinition Width="1*" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*" />
-                                    <RowDefinition Height="1*" />
-                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="20*" />
+                                    <RowDefinition Height="20*" />
+                                    <RowDefinition Height="20*" />
+                                    <RowDefinition Height="20*" />
+                                    <RowDefinition Height="20*" />
+                                    <RowDefinition Height="20*" />
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
-                                    <TextBlock Text="ID" Margin="10" />
-                                    <TextBox Height="23" Text="input ID" Width="120" />
+                                    <TextBlock Text="Listing ID" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="ListingIDInput" Text="input" Width="120" Margin="145,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">
+                                    <TextBlock Text="Listing url" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="listingUrlInput" Text="input" Width="120" Margin="145,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left">
+                                    <TextBlock Text="Listing Name" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="listingNameInput" Text="input" Width="120" Margin="185,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left">
+                                    <TextBlock Text="Summary" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="summaryInput" Text="input" Width="120" Margin="140,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left">
+                                    <TextBlock Text="Space" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="spaceInput" Text="input" Width="120" Margin="145,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left">
+                                    <TextBlock Text="Description" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="descriptionInput" Text="input" Width="120" Margin="145,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left">
+                                    <TextBlock Text="Neighbourhood" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="neighDesInput" Text="input" Width="150" Margin="185,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left">
+                                    <TextBlock Text="Notes" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="notesInput" Text="input notes" Width="120" Margin="140,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left">
+                                    <TextBlock Text="Transit info" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="transitInput" Text="input" Width="120" Margin="145,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">
+                                    <TextBlock Text="Access info" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="accessInput" Text="input" Width="120" Margin="145,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left">
+                                    <TextBlock Text="Interaction info" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="intactionInput" Text="input" Width="120" Margin="185,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="3" Grid.Row="2" HorizontalAlignment="Left">
+                                    <TextBlock Text="House rule" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="ruleInput" Text="input" Width="120" Margin="140,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left">
+                                    <TextBlock Text="Picture url" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="picInput" Text="trial" Width="120" Margin="145,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left">
+                                    <TextBlock Text="Host id" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="listingHostIDInput" Text="trial" Width="120" Margin="145,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left">
+                                    <TextBlock Text="Neigh. Region" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="neighRegionInput" Text="trial" Width="120" Margin="185,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="3" Grid.Row="3" HorizontalAlignment="Left">
+                                    <TextBlock Text="Latitude" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="latitudeInput" Text="trial" Width="120" Margin="140,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left">
+                                    <TextBlock Text="Longtitude" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="longtitudeInput" Text="trial" Width="120" Margin="145,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left">
+                                    <TextBlock Text="Min. stay" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="minStayInput" Text="trial" Width="120" Margin="145,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left">
+                                    <TextBlock Text="Max. stay" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="maxStayInput" Text="trial" Width="120" Margin="185,0,0,0"/>
+                                </Grid>
+
+                                <Button Content="Submit" Grid.Column="3" Grid.Row="5" Margin="0,100,0,0" HorizontalAlignment="Right"/>
+
+
+
+
+
+                            </Grid>
+                            <Grid x:Name="InsertHost" Visibility="Collapsed" Margin="20,20,70,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20*" />
+                                    <RowDefinition Height="20*" />
+                                    <RowDefinition Height="20*" />
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
+                                    <TextBlock Text="Host ID" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="hostHostIDInput" Text="input" Width="120" Margin="155,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">
+                                    <TextBlock Text="Host url" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="hostUrlInput" Text="input" Width="120" Margin="175,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left">
+                                    <TextBlock Text="Host name" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="hostNameInput" Text="input" Width="120" Margin="175,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left">
+                                    <TextBlock Text="Host since" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="sinceInput" Text="yyyy-mm-dd" Width="120" Margin="175,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left">
+                                    <TextBlock Text="Host about" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="aboutInput" Text="input" Width="120" Margin="155,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left">
+                                    <TextBlock Text="Response time" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="responseTimeInput" Text="input" Width="120" Margin="175,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left">
+                                    <TextBlock Text="Response rate" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="responseRateInput" Text="input" Width="120" Margin="175,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left">
+                                    <TextBlock Text="Thumbnail url" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="thumbnailInput" Text="input" Width="120" Margin="175,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left">
+                                    <TextBlock Text="Picture url" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="hostPicInput" Text="input" Width="120" Margin="155,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">
+                                    <TextBlock Text="Neigh. Region" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="hostNeighReigionInput" Text="input" Width="120" Margin="175,0,0,0"/>
                                 </Grid>
                             </Grid>
+                            
+
 
 
                         </StackPanel>
+
                     </TabItem>
 
 

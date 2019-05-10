@@ -4,16 +4,21 @@
 winexe
 C#
 .cs
-C:\Users\asus\Desktop\Hack\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\
 CS322_DB_interface
 none
 false
 DEBUG;TRACE
-C:\Users\asus\Desktop\Hack\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\App.xaml
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\App.xaml
 11151548125
 
+<<<<<<< HEAD
 11424337630
 18-3253431
+=======
+91033419863
+17-1950821011
+>>>>>>> 39b09d16839ddb5adbf41d6980c5a309d908bb77
 MainWindow.xaml;
 
 True

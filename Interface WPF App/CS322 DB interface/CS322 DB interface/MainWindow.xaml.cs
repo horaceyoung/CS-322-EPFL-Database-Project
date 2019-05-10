@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using MySql.Data.MySqlClient;
 
 
 namespace Proj
@@ -23,17 +23,41 @@ namespace Proj
     public partial class MainWindow : Window
     {
         public string[] table_names { get; set; }
+<<<<<<< HEAD
         List<String> Verification = new List<String>();
         public MainWindow()
         {
             InitializeComponent();
 
             table_names = new string[] { "Listing", "Host", "Country", "Score" };
+=======
+        public string[] VerificationName { get; set; }
+        public MySqlConnection airbnbConnection;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            DatabaseConnect();
+            table_names = new string[] { "Listing", "Host", "City", "Country", "Room Type", "Property Type" };
+            VerificationName = new string[] { "telephone", "email"};
+>>>>>>> 39b09d16839ddb5adbf41d6980c5a309d908bb77
             DataContext = this;
 
         }   
     
         
+
+        private void Bttn_srch_Click(object sender, EventArgs e){
+            
+            String textB_srch_value =  TextB_srch.Text;
+            // ..........................................
+        }
+
+        private void Bttn_dlet_Click(object sender, EventArgs e){
+
+            String textB_dlet_value =  TextB_dlet.Text;
+            // ..........................................
+        }
 
         private void InsertTableOption_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -100,5 +124,29 @@ namespace Proj
 
         }
 
+<<<<<<< HEAD
+=======
+        private void DatabaseConnect()
+        {
+
+            // try catch for test only can delt
+            try{
+                string connectionString = "Server=localhost;DATABASE=airbnb;UID==root;PASSWORD=yh19981118";
+                airbnbConnection = new MySqlConnection(connectionString);
+                airbnbConnection.Open();
+                MessageBox.Show("DB connection seccessful","Connection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Connection Failed");
+            }
+
+        }
+
+        private void DatabaseClose()
+        {
+            airbnbConnection.Close();
+        }
+>>>>>>> 39b09d16839ddb5adbf41d6980c5a309d908bb77
     }
 }

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
+
 namespace Proj
 {
     /// <summary>
@@ -22,63 +23,82 @@ namespace Proj
     public partial class MainWindow : Window
     {
         public string[] table_names { get; set; }
-        public string[] VerificationName { get; set; }
+        List<String> Verification = new List<String>();
         public MainWindow()
         {
             InitializeComponent();
 
-            table_names = new string[] { "Listing", "Host", "City", "Country", "Room Type", "Property Type" };
-            VerificationName = new string[] { "telephone", "email"};
+            table_names = new string[] { "Listing", "Host", "Country", "Score" };
             DataContext = this;
-        }
+
+        }   
+    
+        
 
         private void InsertTableOption_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch(InsertTableOption.SelectedItem.ToString()){
+            switch (InsertTableOption.SelectedItem.ToString()){
                 case "Listing":
+                    newSelection(sender, e);
                     InsertListing.Visibility = Visibility.Visible;
-                    InsertHost.Visibility = Visibility.Collapsed;
                     break;
                 case "Host":
+                    newSelection(sender, e);
                     InsertHost.Visibility = Visibility.Visible;
-                    InsertListing.Visibility = Visibility.Collapsed;
-                    //HostVerificationInsert.Visibility = Visibility.Visible;
-                    //                            < Grid x: Name = "HostVerificationInsert" HorizontalAlignment = "Left" Margin = "80,10,0,0" Visibility = "Collapsed" >
-
-                    //                    < TextBlock Text = "Host Verification" />
-
-                    //                     < StackPanel >
-
-
-                    //                         < ComboBox Name = "cb" ItemsSource = "{Binding .}" Margin = "0,20,0,0" >
-
-                    //                                  < ComboBox.ItemTemplate >
-
-                    //                                      < DataTemplate >
-
-                    //                                          < StackPanel Orientation = "Horizontal" >
-
-                    //                                               < CheckBox Name = "HostVerification"  IsChecked = "{Binding IsChecked}" Checked = "CheckBox_Checked" Unchecked = "CheckBox_Unchecked" ></ CheckBox >
-
-                    //                                                      < TextBlock Text = "{Binding VerificationName}" ></ TextBlock >
-
-                    //                                                   </ StackPanel >
-
-                    //                                               </ DataTemplate >
-
-                    //                                           </ ComboBox.ItemTemplate >
-
-                    //                                       </ ComboBox >
-
-                    //                                   </ StackPanel >
-
-                    //                               </ Grid >
                     break;
-                    
+                case "Country":
+                    newSelection(sender, e);
+                    InsertCountry.Visibility = Visibility.Visible;
+                    break;
+                case "Score":
+                    newSelection(sender, e);
+                    InsertScore.Visibility = Visibility.Visible;
+                    break;
 
             }
-
+        
 
         }
+        private void newSelection(object sender, SelectionChangedEventArgs e)
+        {
+            InsertListing.Visibility = Visibility.Collapsed;
+            InsertHost.Visibility = Visibility.Collapsed;
+            InsertCountry.Visibility = Visibility.Collapsed;
+            InsertScore.Visibility = Visibility.Collapsed;
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckedHandle(sender as CheckBox);
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            UncheckedHandle(sender as CheckBox);
+        }
+
+        void CheckedHandle(CheckBox checkBox)
+        {
+            //// Use IsChecked.
+            //bool flag = checkBox.IsChecked.Value;
+
+            //// Assign Window Title.
+            //this.Title = "IsChecked = " + flag.ToString();
+
+            Verification.Add(checkBox.Content.ToString());
+
+        }
+        void UncheckedHandle(CheckBox checkBox)
+        {
+            //// Use IsChecked.
+            //bool flag = checkBox.IsChecked.Value;
+
+            //// Assign Window Title.
+            //this.Title = "IsChecked = " + flag.ToString();
+
+            Verification.Remove(checkBox.Content.ToString());
+
+        }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿<Window x:Class="Proj.MainWindow"
+<Window x:Class="Proj.MainWindow"
        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -42,13 +42,11 @@
                                 <TextBox Name="TextB_srch" Padding="2" Grid.Column="1" Margin="80 10 10 0" IsReadOnly="False" Background="Beige"/>
                                 <Button Name="Bttn_srch" Margin="10 10 190 0" Grid.Column="2" Content=" Search " />
                             </Grid>
-
-
+                            <Grid>
+                                <DataGrid Name="DisplayDataGrid"  Margin="80 30 80 0" Height="300" Background="Beige"></DataGrid>
+                            </Grid>
 
                         </StackPanel>
-
-
-
                     </TabItem>
 
 
@@ -160,7 +158,9 @@
                                     <TextBox Name="maxStayInput" Text="4" Width="120" Margin="185,0,0,0"/>
                                 </Grid>
 
+
                                 <Button Content="Submit" Grid.Column="3" Grid.Row="5" Margin="0,100,0,0" HorizontalAlignment="Right" Click="InsertTable"/>
+
 
 
 
@@ -236,14 +236,12 @@
                                     <CheckBox Name="Identity_manual" Content="Identity manual" Margin="80,80,0,0"></CheckBox>
                                
                                 </Grid>
-                                <Button Name="HostSubmitButton" Content="Submit" Margin="880,30,50,0"></Button>
                             </StackPanel>
                             <Grid x:Name="InsertCountry" Visibility="Collapsed">
                                 <Grid>
                                     <TextBlock Text="Country Name" Margin="80,30,0,0" FontSize="15"/>
                                     <TextBox Name="countryInput" Text="input country name" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
                                 </Grid>
-                                <Button Name="countrySubmit" Content="Submit" Margin="880,25,20,0"></Button>
                             </Grid>
                             <Grid x:Name="InsertScore" Visibility="Collapsed">
                                 <Grid.ColumnDefinitions>
@@ -289,8 +287,9 @@
                                     <TextBlock Text="Value Score" Margin="80,30,0,0" FontSize="15"/>
                                     <TextBox Name="ValScore" Text="input" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
                                 </Grid>
-                                <Button Grid.Row="4" Grid.Column="1"  Name="scoreSubmit" Content="Submit" Margin="380,20,20,0"></Button>
                             </Grid>
+                           
+                                <Button Grid.Row="4" Name="InsertSubmit" Content="Submit" Margin="900,20,20,0"></Button>
                         </StackPanel>
 
                     </TabItem>
@@ -320,14 +319,32 @@
 
 
                     <TabItem Header="Customise Query">
-                        <TextBlock Text="To submit self-defined query" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Grid x:Name="PredefinedQuery" Visibility="Visible">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="400"/>
+                                <ColumnDefinition Width="800"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <TextBlock Text="Select Query" Grid.Column="0" Grid.Row="0" FontSize="15" Margin="20 0 0 0" VerticalAlignment="Bottom"/>
+                                <ComboBox Background="Beige" Grid.Column="1" Width="200"   Text="Select Query" VerticalAlignment="Bottom" FontSize="15" Margin="100 0 0 0" Name="selectQuery" ItemsSource="{Binding table_queries}" SelectionChanged="QuerySelectionChanged"/>
+                            </Grid>
+                            <Grid x:Name="firstQuery" Visibility="Visible" Grid.Row="1" Margin="20 0 0 0" VerticalAlignment="Bottom">
+                                <TextBlock Text="Cheapest listing on " FontSize="15"/>
+                                <DatePicker Background="Beige" Margin="150 0 150 0"/>
+                                <TextBlock Text="in" Margin="250 0 0 0" FontSize="15"/>
+                                <ComboBox Background="Beige" Margin="280 0 0 0" ItemsSource="{Binding table_regionChoice}"/>
+                            </Grid>
+                        </Grid>
                     </TabItem>
-                    <TabItem>
-                        <TabItem.Header>
-                            <materialDesign:PackIcon Kind="GithubCircle" Foreground="{DynamicResource PrimaryHueLightBrush}"/>
-                        </TabItem.Header>
-                        <TextBlock Text="github.com/Abel13/TabMenu2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </TabItem>
+
 
 
                 </dragablz:TabablzControl>

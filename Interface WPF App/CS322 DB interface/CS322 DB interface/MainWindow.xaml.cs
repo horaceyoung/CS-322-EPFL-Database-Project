@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -24,7 +24,12 @@ namespace Proj
     public partial class MainWindow : Window
     {
         public string[] table_names { get; set; }
+
+        public string[] table_queries { get; set; }
+        public string[] table_regionChoice { get; set; }
+
         public MySqlConnection airbnbConnection;
+
         List<String> Verification = new List<String>();
         public MainWindow()
         {
@@ -32,13 +37,12 @@ namespace Proj
 
             table_names = new string[] { "Listing", "Host", "Country", "Score" };
 
+            table_queries = new string[] { "Select cheapest listing on certain date", "Average price of house with certain number of certain rooms"};
+            table_regionChoice = new string[] { "El Raval", "El Poblenou", "L'Antiga Esquerra de l'Eixample", "El Born" };
             DataContext = this;
-
-            DatabaseConnect();
-
-        }
-
-
+        }   
+    
+        
 
         private void Bttn_srch_Click(object sender, EventArgs e)
         {
@@ -52,6 +56,23 @@ namespace Proj
 
             String textB_dlet_value = TextB_dlet.Text;
             // ..........................................
+        }
+
+        private void QuerySelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (selectQuery.SelectedIndex) {
+                case 1:
+                    newQuerySelection(sender,e);
+                    firstQuery.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
+
+        private void newQuerySelection(object sender, SelectionChangedEventArgs e)
+        {
+            firstQuery.Visibility = Visibility.Collapsed;
+            //InsertHost.Visibility = Visibility.Collapsed;
+            //InsertCountry.Visibility = Visibility.Collapsed;
         }
 
         private void InsertTableOption_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -119,6 +140,7 @@ namespace Proj
             Verification.Remove(checkBox.Content.ToString());
 
         }
+
 
 
         private void DatabaseConnect()
@@ -318,3 +340,4 @@ namespace Proj
     }
 
 }
+

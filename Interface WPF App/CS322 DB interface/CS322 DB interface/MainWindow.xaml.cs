@@ -23,26 +23,17 @@ namespace Proj
     public partial class MainWindow : Window
     {
         public string[] table_names { get; set; }
-<<<<<<< HEAD
+        public string[] table_queries { get; set; }
+        public string[] table_regionChoice { get; set; }
         List<String> Verification = new List<String>();
         public MainWindow()
         {
             InitializeComponent();
 
             table_names = new string[] { "Listing", "Host", "Country", "Score" };
-=======
-        public string[] VerificationName { get; set; }
-        public MySqlConnection airbnbConnection;
-
-        public MainWindow()
-        {
-            InitializeComponent();
-            DatabaseConnect();
-            table_names = new string[] { "Listing", "Host", "City", "Country", "Room Type", "Property Type" };
-            VerificationName = new string[] { "telephone", "email"};
->>>>>>> 39b09d16839ddb5adbf41d6980c5a309d908bb77
+            table_queries = new string[] { "Select cheapest listing on certain date", "Average price of house with certain number of certain rooms"};
+            table_regionChoice = new string[] { "El Raval", "El Poblenou", "L'Antiga Esquerra de l'Eixample", "El Born" };
             DataContext = this;
-
         }   
     
         
@@ -57,6 +48,23 @@ namespace Proj
 
             String textB_dlet_value =  TextB_dlet.Text;
             // ..........................................
+        }
+
+        private void QuerySelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (selectQuery.SelectedIndex) {
+                case 1:
+                    newQuerySelection(sender,e);
+                    firstQuery.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
+
+        private void newQuerySelection(object sender, SelectionChangedEventArgs e)
+        {
+            firstQuery.Visibility = Visibility.Collapsed;
+            //InsertHost.Visibility = Visibility.Collapsed;
+            //InsertCountry.Visibility = Visibility.Collapsed;
         }
 
         private void InsertTableOption_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -124,29 +132,28 @@ namespace Proj
 
         }
 
-<<<<<<< HEAD
-=======
-        private void DatabaseConnect()
+
+        private void databaseconnect()
         {
 
-            // try catch for test only can delt
-            try{
-                string connectionString = "Server=localhost;DATABASE=airbnb;UID==root;PASSWORD=yh19981118";
-                airbnbConnection = new MySqlConnection(connectionString);
-                airbnbConnection.Open();
-                MessageBox.Show("DB connection seccessful","Connection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //try catch for test only can delt
+            try
+                {
+                    string connectionstring = "server=localhost;database=airbnb;uid==root;password=yh19981118";
+                    airbnbconnection = new mysqlconnection(connectionstring);
+                    airbnbconnection.open();
+                    messagebox.show("db connection seccessful", "connection", messageboxbuttons.ok, messageboxicon.information);
+                }
+                catch (exception ex)
+                {
+                    messagebox.show("connection failed");
+                }
+
             }
-            catch(Exception ex)
+
+            private void databaseclose()
             {
-                MessageBox.Show("Connection Failed");
+                airbnbconnection.close();
             }
-
         }
-
-        private void DatabaseClose()
-        {
-            airbnbConnection.Close();
-        }
->>>>>>> 39b09d16839ddb5adbf41d6980c5a309d908bb77
-    }
 }

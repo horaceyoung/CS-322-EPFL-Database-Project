@@ -159,7 +159,7 @@
                                     <TextBox Name="maxStayInput" Text="trial" Width="120" Margin="185,0,0,0"/>
                                 </Grid>
 
-                                <Button Content="Submit" Grid.Column="3" Grid.Row="5" Margin="0,100,0,0" HorizontalAlignment="Right"/>
+                                <Button Content="Submit" Name="listingSubmitButton" Grid.Column="3" Grid.Row="5" Margin="0,100,0,0" HorizontalAlignment="Right"/>
 
 
 
@@ -237,13 +237,24 @@
                                 </Grid>
                                 <Button Name="HostSubmitButton" Content="Submit" Margin="880,30,50,0"></Button>
                             </StackPanel>
+
+
+
+
+
+
                             <Grid x:Name="InsertCountry" Visibility="Collapsed">
                                 <Grid>
                                     <TextBlock Text="Country Name" Margin="80,30,0,0" FontSize="15"/>
                                     <TextBox Name="countryInput" Text="input country name" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
                                 </Grid>
-                                <Button Name="countrySubmit" Content="Submit" Margin="880,25,20,0"></Button>
+                                <Button Name="countrySubmitButton" Content="Submit" Margin="880,25,20,0"></Button>
                             </Grid>
+
+
+
+
+
                             <Grid x:Name="InsertScore" Visibility="Collapsed">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="500"/>
@@ -288,7 +299,7 @@
                                     <TextBlock Text="Value Score" Margin="80,30,0,0" FontSize="15"/>
                                     <TextBox Name="ValScore" Text="input" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
                                 </Grid>
-                                <Button Grid.Row="4" Grid.Column="1"  Name="scoreSubmit" Content="Submit" Margin="380,20,20,0"></Button>
+                                <Button Grid.Row="4" Grid.Column="1"  Name="scoreSubmitButton" Content="Submit" Margin="380,20,20,0"></Button>
                             </Grid>
                         </StackPanel>
 

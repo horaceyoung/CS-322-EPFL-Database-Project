@@ -32,6 +32,18 @@ namespace Proj
             DataContext = this;
         }
 
+        private void Bttn_srch_Click(object sender, EventArgs e){
+            
+            String textB_srch_value =  TextB_srch.Text;
+            // ..........................................
+        }
+
+        private void Bttn_dlet_Click(object sender, EventArgs e){
+
+            String textB_dlet_value =  TextB_dlet.Text;
+            // ..........................................
+        }
+
         private void InsertTableOption_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch(InsertTableOption.SelectedItem.ToString()){

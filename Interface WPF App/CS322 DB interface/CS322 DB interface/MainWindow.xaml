@@ -1,4 +1,4 @@
-﻿<Window x:Class="Proj.MainWindow"
+<Window x:Class="Proj.MainWindow"
        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -20,7 +20,7 @@
         
         <Grid Margin="0 60 0 0">
             <Grid>
-                <dragablz:TabablzControl>
+                <dragablz:TabablzControl SelectionChanged="TabablzControl_SelectionChanged">
                     <dragablz:TabablzControl.InterTabController>
                         <dragablz:InterTabController/>
                     </dragablz:TabablzControl.InterTabController>
@@ -82,7 +82,7 @@
 
                                 <Grid Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
                                     <TextBlock Text="Listing ID" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="ListingIDInput" Text="input" Width="120" Margin="145,0,0,0"/>
+                                    <TextBox Name="listingIDInput" Text="987654321" Width="120" Margin="145,0,0,0"/>
                                 </Grid>
                                 <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">
                                     <TextBlock Text="Listing url" Margin="60,0,5,0" FontSize="15"/>
@@ -122,7 +122,7 @@
                                 </Grid>
                                 <Grid Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left">
                                     <TextBlock Text="Interaction info" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="intactionInput" Text="input" Width="120" Margin="185,0,0,0"/>
+                                    <TextBox Name="interactionInput" Text="input" Width="120" Margin="185,0,0,0"/>
                                 </Grid>
                                 <Grid Grid.Column="3" Grid.Row="2" HorizontalAlignment="Left">
                                     <TextBlock Text="House rule" Margin="60,0,5,0" FontSize="15"/>
@@ -134,28 +134,32 @@
                                 </Grid>
                                 <Grid Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left">
                                     <TextBlock Text="Host id" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="listingHostIDInput" Text="trial" Width="120" Margin="145,0,0,0"/>
+                                    <TextBox Name="listingHostIDInput" Text="987654321" Width="120" Margin="145,0,0,0"/>
                                 </Grid>
                                 <Grid Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left">
                                     <TextBlock Text="Neigh. Region" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="neighRegionInput" Text="trial" Width="120" Margin="185,0,0,0"/>
+                                    <TextBox Name="neighRegionInput" Text="1" Width="120" Margin="185,0,0,0"/>
                                 </Grid>
+
                                 <Grid Grid.Column="3" Grid.Row="3" HorizontalAlignment="Left">
                                     <TextBlock Text="Latitude" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="latitudeInput" Text="trial" Width="120" Margin="140,0,0,0"/>
+                                    <TextBox Name="latitudeInput" Text="10.12" Width="120" Margin="140,0,0,0"/>
                                 </Grid>
                                 <Grid Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left">
-                                    <TextBlock Text="Longtitude" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="longtitudeInput" Text="trial" Width="120" Margin="145,0,0,0"/>
+                                    <TextBlock Text="Longitude" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="longitudeInput" Text="10.12" Width="120" Margin="145,0,0,0"/>
                                 </Grid>
                                 <Grid Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left">
                                     <TextBlock Text="Min. stay" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="minStayInput" Text="trial" Width="120" Margin="145,0,0,0"/>
+                                    <TextBox Name="minStayInput" Text="1" Width="120" Margin="145,0,0,0"/>
                                 </Grid>
                                 <Grid Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left">
                                     <TextBlock Text="Max. stay" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="maxStayInput" Text="trial" Width="120" Margin="185,0,0,0"/>
+                                    <TextBox Name="maxStayInput" Text="4" Width="120" Margin="185,0,0,0"/>
                                 </Grid>
+
+
+                                <Button Content="Submit" Grid.Column="3" Grid.Row="5" Margin="0,100,0,0" HorizontalAlignment="Right" Click="InsertTable"/>
 
 
 

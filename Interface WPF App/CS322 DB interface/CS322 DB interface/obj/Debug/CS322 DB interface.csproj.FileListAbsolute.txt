@@ -53,3 +53,7 @@ C:\Users\asus\Desktop\Interface WPF App\CS322 DB interface\CS322 DB interface\ob
 C:\Users\asus\Desktop\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\CS322 DB interface_MarkupCompile.lref
 C:\Users\asus\Desktop\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\CS322 DB interface.exe
 C:\Users\asus\Desktop\Interface WPF App\CS322 DB interface\CS322 DB interface\obj\Debug\CS322 DB interface.pdb
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\bin\Debug\MySql.Data.dll
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\bin\Debug\Google.Protobuf.dll
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\User\Desktop\CS-322-EPFL-Database-Project\Interface WPF App\CS322 DB interface\CS322 DB interface\bin\Debug\MySql.Data.xml

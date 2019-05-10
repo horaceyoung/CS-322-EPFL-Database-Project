@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using MySql.Data.MySqlClient;
 
 namespace Proj
 {
@@ -23,10 +23,11 @@ namespace Proj
     {
         public string[] table_names { get; set; }
         public string[] VerificationName { get; set; }
+        public MySqlConnection airbnbConnection;
         public MainWindow()
         {
             InitializeComponent();
-
+            DatabaseConnect();
             table_names = new string[] { "Listing", "Host", "City", "Country", "Room Type", "Property Type" };
             VerificationName = new string[] { "telephone", "email"};
             DataContext = this;
@@ -91,6 +92,18 @@ namespace Proj
             }
 
 
+        }
+
+        private void DatabaseConnect()
+        {
+            string connectionString = "Server=localhost;DATABASE=airbnb;UID==root;PASSWORD=yh19981118";
+            airbnbConnection = new MySqlConnection(connectionString);
+            airbnbConnection.Open();
+        }
+
+        private void DatabaseClose()
+        {
+            airbnbConnection.Close();
         }
     }
 }

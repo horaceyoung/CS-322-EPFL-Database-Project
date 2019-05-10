@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -217,7 +218,7 @@ namespace Proj
                             verificationCheck += "'" + box.Content.ToString() + "'";
                         }
                     }
-
+                    verificationCheck += "]";
 
 
 
@@ -239,9 +240,81 @@ namespace Proj
             }
         }
 
+        private void AUD(String sql_stmt, int state)
+        {
+            String msg = "";
+            MySqlCommand cmd = airbnbConnection.CreateCommand();
+            cmd.CommandText = sql_stmt;
+            cmd.CommandType = CommandType.Text;
+
+            switch (state)
+            {
+                case 0:
+                    msg = "Keyword searched successfully";
+                    cmd.Parameters.Add("");
+                    break;
+                case 1:
+                    msg = "Row deleted seccessfully";
+                    break;
+
+            }
+            try
+            {
+                int n = cmd.ExecuteNonQuery();
+                if (n > 0)
+                {
+                    MessageBox.Show(msg);
+                    //this.updateDataGrid();
+                }
+            }
+            catch (Exception ex) { }
+        }
+
+        private void Bttn_srch_Click(object sender, RoutedEventArgs e)
+        {
+
+            string tableName = ComboB_srch.Text;
+            string textB_srch_value = TextB_srch.Text;
+
+            switch (tableName)
+            {
+                case "Listing":
+                    String sql = "SELECT * FROM Listing L WHERE L.id LIKE " + textB_srch_value
+                                + "L.listing_url LIKE " + textB_srch_value
+                                + "L.name LIKE " + textB_srch_value
+                                + "L.summary LIKE " + textB_srch_value
+                                + "L.space LIKE " + textB_srch_value
+                                + "L.description LIKE " + textB_srch_value
+                                + "L.neighbourhood_overview LIKE " + textB_srch_value
+                                + "L.notes LIKE " + textB_srch_value
+                                + "L.transit LIEK " + textB_srch_value
+                                + "L.access LIKE " + textB_srch_value
+                                + "L.interaction LIEK " + textB_srch_value
+                                + "L.house_rules LIKE " + textB_srch_value
+                                + "L.picture_url LIKE " + textB_srch_value
+                                + "L.host_id LIKE " + textB_srch_value
+                                + "L.neighbourhood LIKE " + textB_srch_value
+                                + "L.latitude LIKE " + textB_srch_value
+                                + "L.longitude LIKE " + textB_srch_value
+                                + "L.minimum_nights LIKE " + textB_srch_value
+                                + "L.maximum_nights LIKE " + textB_srch_value;
+                    this.AUD(sql, 0);
+                    Bttn_srch.IsEnabled = false;
+                    Bttn_dlet.IsEnabled = true;
+                    break;
+                case "Host":
+                    break;
+                default:
+                    break;
+
+            }
+
+
+        }
         private void TabablzControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
     }
+
 }

@@ -38,7 +38,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <ComboBox Name="ComboB_srch" Padding="2" Margin="80 10 10 0" Grid.Column="0" ItemsSource="{Binding table_names}"/>
+                                <ComboBox x:Name ="ComboB_srch" Padding="2" Margin="80 10 10 0" Grid.Column="0" ItemsSource="{Binding table_names}"/>
                                 <TextBox Name="TextB_srch" Padding="2" Grid.Column="1" Margin="80 10 10 0" IsReadOnly="False" Background="Beige"/>
                                 <Button Name="Bttn_srch" Margin="10 10 190 0" Grid.Column="2" Content=" Search " />
                             </Grid>
@@ -182,7 +182,7 @@
                                     </Grid.RowDefinitions>
                                     <Grid Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
                                         <TextBlock Text="Host ID" Margin="60,0,5,0" FontSize="15"/>
-                                        <TextBox Name="hostHostIDInput" Text="input" Width="120" Margin="155,0,0,0"/>
+                                        <TextBox Name="hostHostIDInput" Text="987654321" Width="120" Margin="155,0,0,0"/>
                                     </Grid>
                                     <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">
                                         <TextBlock Text="Host url" Margin="60,0,5,0" FontSize="15"/>
@@ -194,7 +194,7 @@
                                     </Grid>
                                     <Grid Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left">
                                         <TextBlock Text="Host since" Margin="60,0,5,0" FontSize="15"/>
-                                        <TextBox Name="sinceInput" Text="yyyy-mm-dd" Width="120" Margin="175,0,0,0"/>
+                                        <TextBox Name="sinceInput" Text="1998-11-18" Width="120" Margin="175,0,0,0"/>
                                     </Grid>
                                     <Grid Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left">
                                         <TextBlock Text="Host about" Margin="60,0,5,0" FontSize="15"/>
@@ -218,7 +218,7 @@
                                     </Grid>
                                     <Grid Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">
                                         <TextBlock Text="Neigh. Region" Margin="60,0,5,0" FontSize="15"/>
-                                        <TextBox Name="hostNeighReigionInput" Text="input" Width="120" Margin="175,0,0,0"/>
+                                        <TextBox Name="hostNeighReigionInput" Text="81" Width="120" Margin="175,0,0,0"/>
                                     </Grid>
                                 </Grid>
                                 <Grid x:Name="VerificationSelection"  Margin="80,5,0,0">

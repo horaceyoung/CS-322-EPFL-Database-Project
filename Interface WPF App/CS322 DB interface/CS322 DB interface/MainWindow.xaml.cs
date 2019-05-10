@@ -24,6 +24,7 @@ namespace Proj
         public string[] table_names { get; set; }
         public string[] VerificationName { get; set; }
         public MySqlConnection airbnbConnection;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -96,9 +97,19 @@ namespace Proj
 
         private void DatabaseConnect()
         {
-            string connectionString = "Server=localhost;DATABASE=airbnb;UID==root;PASSWORD=yh19981118";
-            airbnbConnection = new MySqlConnection(connectionString);
-            airbnbConnection.Open();
+
+            // try catch for test only can delt
+            try{
+                string connectionString = "Server=localhost;DATABASE=airbnb;UID==root;PASSWORD=yh19981118";
+                airbnbConnection = new MySqlConnection(connectionString);
+                airbnbConnection.Open();
+                MessageBox.Show("DB connection seccessful","Connection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Connection Failed");
+            }
+
         }
 
         private void DatabaseClose()

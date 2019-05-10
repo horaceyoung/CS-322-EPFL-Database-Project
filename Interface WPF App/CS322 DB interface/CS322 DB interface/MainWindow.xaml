@@ -20,7 +20,7 @@
         
         <Grid Margin="0 60 0 0">
             <Grid>
-                <dragablz:TabablzControl>
+                <dragablz:TabablzControl SelectionChanged="TabablzControl_SelectionChanged">
                     <dragablz:TabablzControl.InterTabController>
                         <dragablz:InterTabController/>
                     </dragablz:TabablzControl.InterTabController>
@@ -84,7 +84,7 @@
 
                                 <Grid Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
                                     <TextBlock Text="Listing ID" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="ListingIDInput" Text="input" Width="120" Margin="145,0,0,0"/>
+                                    <TextBox Name="listingIDInput" Text="987654321" Width="120" Margin="145,0,0,0"/>
                                 </Grid>
                                 <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">
                                     <TextBlock Text="Listing url" Margin="60,0,5,0" FontSize="15"/>
@@ -124,7 +124,7 @@
                                 </Grid>
                                 <Grid Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left">
                                     <TextBlock Text="Interaction info" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="intactionInput" Text="input" Width="120" Margin="185,0,0,0"/>
+                                    <TextBox Name="interactionInput" Text="input" Width="120" Margin="185,0,0,0"/>
                                 </Grid>
                                 <Grid Grid.Column="3" Grid.Row="2" HorizontalAlignment="Left">
                                     <TextBlock Text="House rule" Margin="60,0,5,0" FontSize="15"/>
@@ -136,30 +136,31 @@
                                 </Grid>
                                 <Grid Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left">
                                     <TextBlock Text="Host id" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="listingHostIDInput" Text="trial" Width="120" Margin="145,0,0,0"/>
+                                    <TextBox Name="listingHostIDInput" Text="987654321" Width="120" Margin="145,0,0,0"/>
                                 </Grid>
                                 <Grid Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left">
                                     <TextBlock Text="Neigh. Region" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="neighRegionInput" Text="trial" Width="120" Margin="185,0,0,0"/>
+                                    <TextBox Name="neighRegionInput" Text="1" Width="120" Margin="185,0,0,0"/>
                                 </Grid>
+
                                 <Grid Grid.Column="3" Grid.Row="3" HorizontalAlignment="Left">
                                     <TextBlock Text="Latitude" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="latitudeInput" Text="trial" Width="120" Margin="140,0,0,0"/>
+                                    <TextBox Name="latitudeInput" Text="10.12" Width="120" Margin="140,0,0,0"/>
                                 </Grid>
                                 <Grid Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left">
-                                    <TextBlock Text="Longtitude" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="longtitudeInput" Text="trial" Width="120" Margin="145,0,0,0"/>
+                                    <TextBlock Text="Longitude" Margin="60,0,5,0" FontSize="15"/>
+                                    <TextBox Name="longitudeInput" Text="10.12" Width="120" Margin="145,0,0,0"/>
                                 </Grid>
                                 <Grid Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left">
                                     <TextBlock Text="Min. stay" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="minStayInput" Text="trial" Width="120" Margin="145,0,0,0"/>
+                                    <TextBox Name="minStayInput" Text="1" Width="120" Margin="145,0,0,0"/>
                                 </Grid>
                                 <Grid Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left">
                                     <TextBlock Text="Max. stay" Margin="60,0,5,0" FontSize="15"/>
-                                    <TextBox Name="maxStayInput" Text="trial" Width="120" Margin="185,0,0,0"/>
+                                    <TextBox Name="maxStayInput" Text="4" Width="120" Margin="185,0,0,0"/>
                                 </Grid>
 
-                                <Button Content="Submit" Name="listingSubmitButton" Grid.Column="3" Grid.Row="5" Margin="0,100,0,0" HorizontalAlignment="Right"/>
+                                <Button Content="Submit" Grid.Column="3" Grid.Row="5" Margin="0,100,0,0" HorizontalAlignment="Right" Click="InsertTable"/>
 
 
 
@@ -237,24 +238,13 @@
                                 </Grid>
                                 <Button Name="HostSubmitButton" Content="Submit" Margin="880,30,50,0"></Button>
                             </StackPanel>
-
-
-
-
-
-
                             <Grid x:Name="InsertCountry" Visibility="Collapsed">
                                 <Grid>
                                     <TextBlock Text="Country Name" Margin="80,30,0,0" FontSize="15"/>
                                     <TextBox Name="countryInput" Text="input country name" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
                                 </Grid>
-                                <Button Name="countrySubmitButton" Content="Submit" Margin="880,25,20,0"></Button>
+                                <Button Name="countrySubmit" Content="Submit" Margin="880,25,20,0"></Button>
                             </Grid>
-
-
-
-
-
                             <Grid x:Name="InsertScore" Visibility="Collapsed">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="500"/>
@@ -299,7 +289,7 @@
                                     <TextBlock Text="Value Score" Margin="80,30,0,0" FontSize="15"/>
                                     <TextBox Name="ValScore" Text="input" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
                                 </Grid>
-                                <Button Grid.Row="4" Grid.Column="1"  Name="scoreSubmitButton" Content="Submit" Margin="380,20,20,0"></Button>
+                                <Button Grid.Row="4" Grid.Column="1"  Name="scoreSubmit" Content="Submit" Margin="380,20,20,0"></Button>
                             </Grid>
                         </StackPanel>
 
@@ -307,7 +297,9 @@
 
 
                     <TabItem Header="Delete">
+                        
                         <StackPanel>
+
                             <TextBlock Text="Input an ID to delete" Margin="80 60 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
                             <Grid>

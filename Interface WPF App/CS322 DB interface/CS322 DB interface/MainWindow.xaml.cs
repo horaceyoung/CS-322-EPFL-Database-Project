@@ -23,52 +23,40 @@ namespace Proj
     public partial class MainWindow : Window
     {
         public string[] table_names { get; set; }
-<<<<<<< HEAD
+        public MySqlConnection airbnbConnection;
         List<String> Verification = new List<String>();
         public MainWindow()
         {
             InitializeComponent();
 
             table_names = new string[] { "Listing", "Host", "Country", "Score" };
-=======
-        public string[] VerificationName { get; set; }
-        public MySqlConnection airbnbConnection;
 
-        public MainWindow()
-        {
-            InitializeComponent();
-            DatabaseConnect();
-            table_names = new string[] { "Listing", "Host", "City", "Country", "Room Type", "Property Type" };
-            VerificationName = new string[] { "telephone", "email"};
->>>>>>> 39b09d16839ddb5adbf41d6980c5a309d908bb77
             DataContext = this;
 
-        }   
-    
-        
+            DatabaseConnect();
 
-        private void Bttn_srch_Click(object sender, EventArgs e){
-            
-            String textB_srch_value =  TextB_srch.Text;
+        }
 
+
+
+        private void Bttn_srch_Click(object sender, EventArgs e)
+        {
+
+            String textB_srch_value = TextB_srch.Text;
             // ..........................................
         }
 
-        private void Bttn_dlet_Click(object sender, EventArgs e){
+        private void Bttn_dlet_Click(object sender, EventArgs e)
+        {
 
-            String textB_dlet_value =  TextB_dlet.Text;
-            // ..........................................
-        }
-
-        private void Bttn_dlet_Click(object sender, EventArgs e){
-
-            String textB_dlet_value =  TextB_dlet.Text;
+            String textB_dlet_value = TextB_dlet.Text;
             // ..........................................
         }
 
         private void InsertTableOption_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch (InsertTableOption.SelectedItem.ToString()){
+            switch (InsertTableOption.SelectedItem.ToString())
+            {
                 case "Listing":
                     newSelection(sender, e);
                     InsertListing.Visibility = Visibility.Visible;
@@ -87,7 +75,7 @@ namespace Proj
                     break;
 
             }
-        
+
 
         }
         private void newSelection(object sender, SelectionChangedEventArgs e)
@@ -131,30 +119,129 @@ namespace Proj
 
         }
 
-<<<<<<< HEAD
-=======
+
         private void DatabaseConnect()
         {
-
-            // try catch for test only can delt
-
-            try{
-                string connectionString = "Server=localhost;DATABASE=airbnb;UID==root;PASSWORD=yh19981118";
-                airbnbConnection = new MySqlConnection(connectionString);
+                string connectionstring = "SERVER=localhost;DATABASE=airbnb;UID=root;PASSWORD=yh19981118";
+                airbnbConnection = new MySqlConnection(connectionstring);
                 airbnbConnection.Open();
-                MessageBox.Show("DB connection seccessful","Connection", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Connection Failed");
-            }
-
         }
 
         private void DatabaseClose()
         {
             airbnbConnection.Close();
         }
->>>>>>> 39b09d16839ddb5adbf41d6980c5a309d908bb77
+
+        public void InsertTable(object sender, RoutedEventArgs e)
+        {
+            string tableName;
+            tableName = InsertTableOption.Text;
+            switch (tableName)
+            {
+                case "Listing":
+                    string listingID = listingIDInput.Text;
+                    string listingURL = listingUrlInput.Text;
+                    string listingName = listingNameInput.Text;
+                    string summary = summaryInput.Text;
+                    string space = spaceInput.Text;
+                    string description = descriptionInput.Text;
+                    string neighborhoodOverview = neighDesInput.Text;
+                    string notes = notesInput.Text;
+                    string transitInfo = transitInput.Text;
+                    string accessInfo = accessInput.Text;
+                    string interactionInfo = interactionInput.Text;
+                    string houseRule = ruleInput.Text;
+                    string pictureURL = picInput.Text;
+                    string hostID = listingHostIDInput.Text;
+                    string neighborhood = neighRegionInput.Text;
+                    string latitude = latitudeInput.Text;
+                    string longitude = longitudeInput.Text;
+                    string minStay = minStayInput.Text;
+                    string maxStay = maxStayInput.Text;
+
+                    string insertListingCommandString = "INSERT INTO Listing(listing_id, listing_url, listing_name, summary, space, " +
+                        "listing_description, neighborhood_overview, notes, transit, access, interaction, house_rules, picture_url, " +
+                        "host_id, neighborhood, latitude, longitude, minimum_nights, maximum_nights)" +
+                        "Values(" + listingID + ", " +
+                        "'" + listingURL + "', " +
+                        "'" + listingName + "', " +
+                        "'" + summary + "', " +
+                        "'" + space + "', " +
+                        "'" + description + "', " +
+                        "'" + neighborhoodOverview + "', " +
+                        "'" + notes + "', " +
+                        "'" + transitInfo + "', " +
+                        "'" + accessInfo + "', " +
+                        "'" + interactionInfo + "', " +
+                        "'" + houseRule + "', " +
+                        "'" + pictureURL + "', " +
+                        hostID + ", " +
+                        "'" + neighborhood + "', " +
+                        latitude + ", " +
+                        longitude + ", " +
+                        minStay + ", " +
+                        maxStay + ")";
+
+                        MySqlCommand insertCommand = new MySqlCommand(insertListingCommandString, airbnbConnection);
+                        int rows = insertCommand.ExecuteNonQuery();
+                        MessageBox.Show("success" + " number of rows affected: " + rows.ToString());
+                        break;
+                case "Host":
+                    string hostHostID = hostHostIDInput.Text;
+                    string hostName = hostNameInput.Text;
+                    string hostSince = sinceInput.Text;
+                    string hostAbout = aboutInput.Text;
+                    string responseTime = responseTimeInput.Text;
+                    string responseRate = responseRateInput.Text;
+                    string hostThumbnailURL = thumbnailInput.Text;
+                    string hostPictureURL = hostPicInput.Text;
+                    string hostNeighborhood = hostNeighReigionInput.Text;
+
+                    List<CheckBox> verificationCheckBox = new List<CheckBox>();
+                    verificationCheckBox.Add(Email);
+                    verificationCheckBox.Add(Phone);
+                    verificationCheckBox.Add(Reviews);
+                    verificationCheckBox.Add(Jumio);
+                    verificationCheckBox.Add(Offline_gov_id);
+                    verificationCheckBox.Add(Gov_id);
+                    verificationCheckBox.Add(Facebook);
+                    verificationCheckBox.Add(EmManual_offline);
+                    verificationCheckBox.Add(Work_email);
+                    verificationCheckBox.Add(Selfie);
+                    verificationCheckBox.Add(Identity_manual);
+                    string verificationCheck = "[";
+                    foreach(CheckBox box in verificationCheckBox)
+                    {
+                        if (box.IsChecked == true)
+                        {
+                            verificationCheck += "'" + box.Content.ToString() + "'";
+                        }
+                    }
+
+
+
+
+                    string insertHostCommandString = "INSERT INTO Host(host_url, host_name, host_since, host_about, " +
+                        "host_response_time, host_response_rate, host_thumbnail_url, host_picture_url, host_neighborhood, host_verifications)" +
+                        "Values(" + hostHostID + ", " +
+                        "'" + hostName + "', " +
+                        "'" + hostSince + "', " +
+                        "'" + hostAbout + "', " +
+                        "'" + responseTime + "', " +
+                        "'" + responseRate + "', " +
+                        "'" + hostThumbnailURL + "', " +
+                        hostNeighborhood + ", " +
+                        "'" + verificationCheck + "')";
+                    MessageBox.Show(insertHostCommandString);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void TabablzControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

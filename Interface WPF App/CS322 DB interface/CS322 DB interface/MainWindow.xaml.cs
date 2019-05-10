@@ -37,6 +37,13 @@ namespace Proj
         private void Bttn_srch_Click(object sender, EventArgs e){
             
             String textB_srch_value =  TextB_srch.Text;
+
+            // ..........................................
+        }
+
+        private void Bttn_dlet_Click(object sender, EventArgs e){
+
+            String textB_dlet_value =  TextB_dlet.Text;
             // ..........................................
         }
 
@@ -99,6 +106,7 @@ namespace Proj
         {
 
             // try catch for test only can delt
+
             try{
                 string connectionString = "Server=localhost;DATABASE=airbnb;UID==root;PASSWORD=yh19981118";
                 airbnbConnection = new MySqlConnection(connectionString);

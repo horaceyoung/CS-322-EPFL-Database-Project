@@ -40,6 +40,7 @@ namespace Proj
             table_queries = new string[] { "Select cheapest listing on certain date", "Average price of house with certain number of certain rooms"};
             table_regionChoice = new string[] { "El Raval", "El Poblenou", "L'Antiga Esquerra de l'Eixample", "El Born" };
             DataContext = this;
+            DatabaseConnect();
         }   
     
         
@@ -211,6 +212,7 @@ namespace Proj
                         break;
                 case "Host":
                     string hostHostID = hostHostIDInput.Text;
+                    string hostURL = hostUrlInput.Text;
                     string hostName = hostNameInput.Text;
                     string hostSince = sinceInput.Text;
                     string hostAbout = aboutInput.Text;
@@ -237,25 +239,67 @@ namespace Proj
                     {
                         if (box.IsChecked == true)
                         {
-                            verificationCheck += "'" + box.Content.ToString() + "'";
+                            verificationCheck += "'" + box.Content.ToString() + "', ";
                         }
                     }
                     verificationCheck += "]";
 
 
 
-                    string insertHostCommandString = "INSERT INTO Host(host_url, host_name, host_since, host_about, " +
+                    string insertHostCommandString = "INSERT INTO Host_table(host_id, host_url, host_name, host_since, host_about, " +
                         "host_response_time, host_response_rate, host_thumbnail_url, host_picture_url, host_neighborhood, host_verifications)" +
                         "Values(" + hostHostID + ", " +
+                        "'" + hostURL + "', " +
                         "'" + hostName + "', " +
                         "'" + hostSince + "', " +
                         "'" + hostAbout + "', " +
                         "'" + responseTime + "', " +
-                        "'" + responseRate + "', " +
+                        responseRate + ", " +
                         "'" + hostThumbnailURL + "', " +
+                        "'" + hostPictureURL + "', " +
                         hostNeighborhood + ", " +
                         "'" + verificationCheck + "')";
-                    MessageBox.Show(insertHostCommandString);
+                    MySqlCommand InsertHostCommand = new MySqlCommand(insertHostCommandString, airbnbConnection);
+                    rows = InsertHostCommand.ExecuteNonQuery();
+                    MessageBox.Show("success" + " number of rows affected: " + rows.ToString());
+                    break;
+                case "Country":
+                    string getMaxCountryString = "SELECT MAX(country_id) from country";
+                    MySqlCommand getMaxCountryCommand = new MySqlCommand(getMaxCountryString, airbnbConnection);
+                    string maxCountry = getMaxCountryCommand.ExecuteScalar().ToString();
+                    string targetCountryNo = (System.Convert.ToInt32(maxCountry) + 1).ToString();
+                    string countryName = countryInput.Text;
+
+                    string insertCountryCommandString = "INSERT INTO country(country_id, country_name) " +
+                        "VALUES(" + targetCountryNo + ", " + "'" + countryName + "'" + ")";
+                    MySqlCommand insertCountryCommand = new MySqlCommand(insertCountryCommandString, airbnbConnection);
+                    rows = insertCountryCommand.ExecuteNonQuery();
+                    MessageBox.Show("success" + " number of rows affected: " + rows.ToString());
+                    break;
+                case "Score":
+                    string scoreListingID = ScoreListingID.Text;
+                    string ratingScore = RatingScore.Text;
+                    string accuracyScore = AccuracyScore.Text;
+                    string cleanlinessScore = CleanlinessScore.Text;
+                    string checkInScore = CheckInScore.Text;
+                    string commScore = CommScore.Text;
+                    string locScore = LocScore.Text;
+                    string valueScore = ValScore.Text;
+                    string insertScoreCommandString = "INSERT INTO score(listing_id, review_scores_rating, review_scores_accuracy, review_scores_clean, " +
+                        "review_scores_checkin, review_scores_communication, review_scores_location, review_scores_value)" +
+                        "VALUES(" +
+                        scoreListingID + ", " +
+                        ratingScore + ", " +
+                        accuracyScore + ", " +
+                        cleanlinessScore + ", " +
+                        checkInScore + ", " +
+                        commScore + ", " +
+                        locScore + ", " +
+                        valueScore +
+                        ")";
+                    MySqlCommand insertScoreCommand = new MySqlCommand(insertScoreCommandString, airbnbConnection);
+                    rows = insertScoreCommand.ExecuteNonQuery();
+                    MessageBox.Show("success" + " number of rows affected: " + rows.ToString());
                     break;
                 default:
                     break;
@@ -264,35 +308,25 @@ namespace Proj
 
         private void AUD(String sql_stmt, int state)
         {
-            String msg = "";
-            MySqlCommand cmd = airbnbConnection.CreateCommand();
-            cmd.CommandText = sql_stmt;
-            cmd.CommandType = CommandType.Text;
+            string msg;
+            MySqlCommand cmd = new MySqlCommand(sql_stmt, airbnbConnection);
 
             switch (state)
             {
                 case 0:
+                    DataTable dt = new DataTable();
+                    dt.Load(cmd.ExecuteReader());
+                    DisplayDataGrid.DataContext = dt;
                     msg = "Keyword searched successfully";
-                    cmd.Parameters.Add("");
                     break;
                 case 1:
                     msg = "Row deleted seccessfully";
                     break;
 
             }
-            try
-            {
-                int n = cmd.ExecuteNonQuery();
-                if (n > 0)
-                {
-                    MessageBox.Show(msg);
-                    //this.updateDataGrid();
-                }
-            }
-            catch (Exception ex) { }
         }
 
-        private void Bttn_srch_Click(object sender, RoutedEventArgs e)
+        private void BttnSrchClick(object sender, RoutedEventArgs e)
         {
 
             string tableName = ComboB_srch.Text;

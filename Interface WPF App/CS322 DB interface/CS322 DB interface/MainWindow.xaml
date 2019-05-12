@@ -40,7 +40,7 @@
 
                                 <ComboBox x:Name ="ComboB_srch" Padding="2" Margin="80 10 10 0" Grid.Column="0" ItemsSource="{Binding table_names}"/>
                                 <TextBox Name="TextB_srch" Padding="2" Grid.Column="1" Margin="80 10 10 0" IsReadOnly="False" Background="Beige"/>
-                                <Button Name="Bttn_srch" Margin="10 10 190 0" Grid.Column="2" Content=" Search " />
+                                <Button Name="Bttn_srch" Margin="10 10 190 0" Grid.Column="2" Content=" Search " Click="BttnSrchClick"/>
                             </Grid>
                             <Grid>
                                 <DataGrid Name="DisplayDataGrid"  Margin="80 30 80 0" Height="300" Background="Beige"></DataGrid>
@@ -159,7 +159,6 @@
                                 </Grid>
 
 
-                                <Button Content="Submit" Grid.Column="3" Grid.Row="5" Margin="0,100,0,0" HorizontalAlignment="Right" Click="InsertTable"/>
 
 
 
@@ -221,6 +220,7 @@
                                         <TextBox Name="hostNeighReigionInput" Text="81" Width="120" Margin="175,0,0,0"/>
                                     </Grid>
                                 </Grid>
+                                
                                 <Grid x:Name="VerificationSelection"  Margin="80,5,0,0">
                                     <TextBlock x:Name="forTrial" Text="Verification:" FontSize="15" Margin="0,30,0,0"></TextBlock>
                                     <CheckBox Name="Email" Content="Email" Margin="0,30,0,0" Checked="CheckBox_Checked"></CheckBox>
@@ -237,12 +237,14 @@
                                
                                 </Grid>
                             </StackPanel>
+                            
                             <Grid x:Name="InsertCountry" Visibility="Collapsed">
                                 <Grid>
                                     <TextBlock Text="Country Name" Margin="80,30,0,0" FontSize="15"/>
                                     <TextBox Name="countryInput" Text="input country name" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
                                 </Grid>
                             </Grid>
+                            
                             <Grid x:Name="InsertScore" Visibility="Collapsed">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="500"/>
@@ -257,39 +259,39 @@
                                 </Grid.RowDefinitions>
                                 <Grid Grid.Row="0" Grid.Column="0">
                                     <TextBlock Text="Listing ID" Margin="80,30,0,0" FontSize="15"/>
-                                    <TextBox Name="ScoreListingID" Text="input" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
+                                    <TextBox Name="ScoreListingID" Text="987654321" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
                                 </Grid>
                                 <Grid Grid.Row="0" Grid.Column="1">
                                     <TextBlock Text="Rating Score" Margin="80,30,0,0" FontSize="15"/>
-                                    <TextBox Name="RatingScore" Text="input" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
+                                    <TextBox Name="RatingScore" Text="99" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
                                 </Grid>
                                 <Grid Grid.Row="1" Grid.Column="0">
                                     <TextBlock Text="Accuracy Score" Margin="80,30,0,0" FontSize="15"/>
-                                    <TextBox Name="AccuracyScore" Text="input" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
+                                    <TextBox Name="AccuracyScore" Text="99" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
                                 </Grid>
                                 <Grid Grid.Row="1" Grid.Column="1">
                                     <TextBlock Text="Cleanliness Score" Margin="80,30,0,0" FontSize="15"/>
-                                    <TextBox Name="CleanlinessScore" Text="input" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
+                                    <TextBox Name="CleanlinessScore" Text="99" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
                                 </Grid>
                                 <Grid Grid.Row="2" Grid.Column="0">
                                     <TextBlock Text="Checkin Score" Margin="80,30,0,0" FontSize="15"/>
-                                    <TextBox Name="CheckInScore" Text="input" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
+                                    <TextBox Name="CheckInScore" Text="99" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
                                 </Grid>
                                 <Grid Grid.Row="2" Grid.Column="1">
                                     <TextBlock Text="Communication Score" Margin="80,30,0,0" FontSize="15"/>
-                                    <TextBox Name="CommScore" Text="input" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
+                                    <TextBox Name="CommScore" Text="99" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
                                 </Grid>
                                 <Grid Grid.Row="3" Grid.Column="0">
                                     <TextBlock Text="Location Score" Margin="80,30,0,0" FontSize="15"/>
-                                    <TextBox Name="LocScore" Text="input" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
+                                    <TextBox Name="LocScore" Text="99" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
                                 </Grid>
                                 <Grid Grid.Row="3" Grid.Column="1">
                                     <TextBlock Text="Value Score" Margin="80,30,0,0" FontSize="15"/>
-                                    <TextBox Name="ValScore" Text="input" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
+                                    <TextBox Name="ValScore" Text="99" Width="60" Margin="250,20,0,0" HorizontalAlignment="Left"/>
                                 </Grid>
                             </Grid>
                            
-                                <Button Grid.Row="4" Name="InsertSubmit" Content="Submit" Margin="900,20,20,0"></Button>
+                                <Button Grid.Row="4" Name="InsertSubmit" Content="Submit" Margin="900,20,20,0" Click="InsertTable"></Button>
                         </StackPanel>
 
                     </TabItem>

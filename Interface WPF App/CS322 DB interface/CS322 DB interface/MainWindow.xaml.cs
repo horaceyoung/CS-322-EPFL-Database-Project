@@ -15,7 +15,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 
-
 namespace Proj
 {
     /// <summary>
@@ -37,13 +36,13 @@ namespace Proj
 
             table_names = new string[] { "Listing", "Host", "Country", "Score" };
 
-            table_queries = new string[] { "Select cheapest listing on certain date", "Average price of house with certain number of certain rooms"};
+            table_queries = new string[] { "Select cheapest listing on certain date", "Average price of house with certain number of certain rooms" };
             table_regionChoice = new string[] { "El Raval", "El Poblenou", "L'Antiga Esquerra de l'Eixample", "El Born" };
             DataContext = this;
             DatabaseConnect();
-        }   
-    
-        
+        }
+
+
 
         private void Bttn_srch_Click(object sender, EventArgs e)
         {
@@ -63,7 +62,7 @@ namespace Proj
         {
             switch (selectQuery.SelectedIndex) {
                 case 1:
-                    newQuerySelection(sender,e);
+                    newQuerySelection(sender, e);
                     firstQuery.Visibility = Visibility.Visible;
                     break;
             }
@@ -146,9 +145,9 @@ namespace Proj
 
         private void DatabaseConnect()
         {
-                string connectionstring = "SERVER=localhost;DATABASE=airbnb;UID=root;PASSWORD=yh19981118";
-                airbnbConnection = new MySqlConnection(connectionstring);
-                airbnbConnection.Open();
+            string connectionstring = "SERVER=localhost;DATABASE=airbnb;UID=root;PASSWORD=yh19981118";
+            airbnbConnection = new MySqlConnection(connectionstring);
+            airbnbConnection.Open();
         }
 
         private void DatabaseClose()
@@ -206,10 +205,10 @@ namespace Proj
                         minStay + ", " +
                         maxStay + ")";
 
-                        MySqlCommand insertCommand = new MySqlCommand(insertListingCommandString, airbnbConnection);
-                        int rows = insertCommand.ExecuteNonQuery();
-                        MessageBox.Show("success" + " number of rows affected: " + rows.ToString());
-                        break;
+                    MySqlCommand insertCommand = new MySqlCommand(insertListingCommandString, airbnbConnection);
+                    int rows = insertCommand.ExecuteNonQuery();
+                    MessageBox.Show("success" + " number of rows affected: " + rows.ToString());
+                    break;
                 case "Host":
                     string hostHostID = hostHostIDInput.Text;
                     string hostURL = hostUrlInput.Text;
@@ -235,7 +234,7 @@ namespace Proj
                     verificationCheckBox.Add(Selfie);
                     verificationCheckBox.Add(Identity_manual);
                     string verificationCheck = "[";
-                    foreach(CheckBox box in verificationCheckBox)
+                    foreach (CheckBox box in verificationCheckBox)
                     {
                         if (box.IsChecked == true)
                         {
@@ -306,23 +305,19 @@ namespace Proj
             }
         }
 
-        private void AUD(String sql_stmt, int state)
+        private void AUD(string sql_stmt, string mode)
         {
-            string msg;
             MySqlCommand cmd = new MySqlCommand(sql_stmt, airbnbConnection);
-
-            switch (state)
+            MySqlDataReader rd = cmd.ExecuteReader();
+            switch (mode)
             {
-                case 0:
-                    DataTable dt = new DataTable();
-                    dt.Load(cmd.ExecuteReader());
-                    DisplayDataGrid.DataContext = dt;
-                    msg = "Keyword searched successfully";
-                    break;
-                case 1:
-                    msg = "Row deleted seccessfully";
-                    break;
+                case "Listing":
 
+                    break;
+                case "Host":
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -335,30 +330,66 @@ namespace Proj
             switch (tableName)
             {
                 case "Listing":
-                    String sql = "SELECT * FROM Listing L WHERE L.id LIKE " + textB_srch_value
-                                + "L.listing_url LIKE " + textB_srch_value
-                                + "L.name LIKE " + textB_srch_value
-                                + "L.summary LIKE " + textB_srch_value
-                                + "L.space LIKE " + textB_srch_value
-                                + "L.description LIKE " + textB_srch_value
-                                + "L.neighbourhood_overview LIKE " + textB_srch_value
-                                + "L.notes LIKE " + textB_srch_value
-                                + "L.transit LIEK " + textB_srch_value
-                                + "L.access LIKE " + textB_srch_value
-                                + "L.interaction LIEK " + textB_srch_value
-                                + "L.house_rules LIKE " + textB_srch_value
-                                + "L.picture_url LIKE " + textB_srch_value
-                                + "L.host_id LIKE " + textB_srch_value
-                                + "L.neighbourhood LIKE " + textB_srch_value
-                                + "L.latitude LIKE " + textB_srch_value
-                                + "L.longitude LIKE " + textB_srch_value
-                                + "L.minimum_nights LIKE " + textB_srch_value
-                                + "L.maximum_nights LIKE " + textB_srch_value;
+<<<<<<< HEAD
+                    string sql = "SELECT * FROM Listing L WHERE L.listing_id LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.listing_url LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.listing_name LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.summary LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.space LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.listing_description LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.neighborhood_overview LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.notes LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.transit LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.access LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.interaction LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.house_rules LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.picture_url LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.host_id LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.neighborhood LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.latitude LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.longitude LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.minimum_nights LIKE '%" + textB_srch_value + "%' OR "
+                                + "L.maximum_nights LIKE '%" + textB_srch_value + "%'";
+                    this.AUD(sql, "Listing");
+=======
+                    String sql = "SELECT * FROM Host L WHERE L.listing_id LIKE %" + textB_srch_value + "% OR "
+                                + "L.listing_url LIKE %" + textB_srch_value + "% OR "
+                                + "L.listing_name LIKE %" + textB_srch_value + "% OR "
+                                + "L.summary LIKE %" + textB_srch_value + "% OR "
+                                + "L.space LIKE %" + textB_srch_value + "% OR "
+                                + "L.listing_description LIKE %" + textB_srch_value + "% OR "
+                                + "L.neighbourhood_overview LIKE %" + textB_srch_value + "% OR "
+                                + "L.notes LIKE %" + textB_srch_value + "% OR "
+                                + "L.transit LIKE %" + textB_srch_value + "% OR "
+                                + "L.access LIKE %" + textB_srch_value + "% OR "
+                                + "L.interaction LIKE %" + textB_srch_value + "% OR "
+                                + "L.house_rules LIKE %" + textB_srch_value + "% OR "
+                                + "L.picture_url LIKE %" + textB_srch_value + "% OR "
+                                + "L.host_id LIKE %" + textB_srch_value + "% OR "
+                                + "L.neighbourhood LIKE %" + textB_srch_value + "% OR "
+                                + "L.latitude LIKE %" + textB_srch_value + "% OR "
+                                + "L.longitude LIKE %" + textB_srch_value + "% OR "
+                                + "L.minimum_nights LIKE %" + textB_srch_value + "% OR "
+                                + "L.maximum_nights LIKE %" + textB_srch_value + "%";
+                    MessageBox.Show(sql);
                     this.AUD(sql, 0);
                     Bttn_srch.IsEnabled = false;
                     Bttn_dlet.IsEnabled = true;
+>>>>>>> 65b273a47a74ec65f83e2a2a219599e2dd0d385e
                     break;
                 case "Host":
+                    sql = "SELECT * FROM Host_table H WHERE H.host_id LIKE '%" + textB_srch_value + "%' OR "
+                                        + "H.host_url LIKE '%" + textB_srch_value + "%' OR "
+                                        + "H.host_name LIKE '%" + textB_srch_value + "%' OR "
+                                        + "H.host_since LIKE '%" + textB_srch_value + "%' OR "
+                                        + "H.host_about LIKE '%" + textB_srch_value + "%' OR "
+                                        + "H.host_response_time LIKE '%" + textB_srch_value + "%' OR "
+                                        + "H.host_response_rate LIKE '%" + textB_srch_value + "%' OR "
+                                        + "H.host_thumbnail_url LIKE '%" + textB_srch_value + "%' OR "
+                                        + "H.host_picture_url LIKE '%" + textB_srch_value + "%' OR "
+                                        + "H.host_neighborhood LIKE '%" + textB_srch_value + "%' OR "
+                                        + "H.host_verifications LIKE '%" + textB_srch_value + "%'";
+                    this.AUD(sql, "Host");
                     break;
                 default:
                     break;
@@ -367,11 +398,100 @@ namespace Proj
 
 
         }
+
+        private void Bttn_dlet_Click(object sender, RoutedEventArgs e)
+        {
+
+            string tableName = ComboB_dlet.Text;
+            string textB_dlet_value = TextB_dlet.Text;
+
+            switch (tableName)
+            {
+                case "Listing":
+                    string sql = "DELETE FROM Listing WHERE Listing.listing_id = " + textB_dlet_value;
+                    MySqlCommand cmd = new MySqlCommand(sql, airbnbConnection);
+                    cmd.ExecuteNonQuery();
+                    break;
+                case "Host":
+                    sql = "DELETE FROM Host_table WHERE Host_table.host_id = " + textB_dlet_value;
+                    cmd = new MySqlCommand(sql, airbnbConnection);
+                    MessageBox.Show(sql);
+                    cmd.ExecuteNonQuery();
+                    break;
+                case "Country":
+                    sql = "DELETE FROM Country WHERE Country.country_id = " + textB_dlet_value;
+                    cmd = new MySqlCommand(sql, airbnbConnection);
+                    cmd.ExecuteNonQuery();
+                    break;
+                case "Score":
+                    sql = "DELETE FROM Score WHERE Score.score_id = " + textB_dlet_value;
+                    cmd = new MySqlCommand(sql, airbnbConnection);
+                    cmd.ExecuteNonQuery();
+                    break;
+            }
+
+        }
+
         private void TabablzControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
+
     }
+
+    public class Listing{
+        protected int listing_id;
+        protected string listing_url;
+        protected string listing_name;
+        protected string summary;
+        protected string space;
+        protected string listing_description;
+        protected string neighborhood_overview;
+        protected string notes;
+        protected string transit;
+        protected string access;
+        protected string interaction;
+        protected string house_rules;
+        protected string picture_url;
+        protected int host_id;
+        protected string neighborhood;
+        protected double latitude;
+        protected double longitude;
+        protected int minimum_nights;
+        protected int maximum_nights;
+        
+        public Listing(int listing_id,
+        string listing_url,string listing_name,string summary,string space,string listing_description,string neighborhood_overview,
+        string notes,string transit,string access,string interaction,string house_rules,string picture_url,int host_id,string neighborhood,
+        double latitude,double longitude, int minimum_nights, int maximum_nights)
+        {
+            this.listing_id = listing_id;
+            this.listing_url = listing_url;
+            this.listing_name = listing_name;
+            this.summary = summary;
+            this.space = space;
+            this.listing_description = listing_description;
+            this.neighborhood_overview = neighborhood_overview;
+            this.notes = notes;
+            this.transit = transit;
+            this.access = access;
+            this.interaction = interaction;
+            this.house_rules = house_rules;
+            this.picture_url = picture_url;
+            this.host_id = host_id;
+            this.neighborhood = neighborhood;
+            this.latitude = latitude;
+            this.longitude = longitude;
+            this.minimum_nights = minimum_nights;
+            this.maximum_nights = maximum_nights;
+        }
+    }
+
+    public class Host
+    {
+        
+    }
+
 
 }
 

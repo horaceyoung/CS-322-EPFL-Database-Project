@@ -330,7 +330,6 @@ namespace Proj
             switch (tableName)
             {
                 case "Listing":
-<<<<<<< HEAD
                     string sql = "SELECT * FROM Listing L WHERE L.listing_id LIKE '%" + textB_srch_value + "%' OR "
                                 + "L.listing_url LIKE '%" + textB_srch_value + "%' OR "
                                 + "L.listing_name LIKE '%" + textB_srch_value + "%' OR "
@@ -351,31 +350,6 @@ namespace Proj
                                 + "L.minimum_nights LIKE '%" + textB_srch_value + "%' OR "
                                 + "L.maximum_nights LIKE '%" + textB_srch_value + "%'";
                     this.AUD(sql, "Listing");
-=======
-                    String sql = "SELECT * FROM Host L WHERE L.listing_id LIKE %" + textB_srch_value + "% OR "
-                                + "L.listing_url LIKE %" + textB_srch_value + "% OR "
-                                + "L.listing_name LIKE %" + textB_srch_value + "% OR "
-                                + "L.summary LIKE %" + textB_srch_value + "% OR "
-                                + "L.space LIKE %" + textB_srch_value + "% OR "
-                                + "L.listing_description LIKE %" + textB_srch_value + "% OR "
-                                + "L.neighbourhood_overview LIKE %" + textB_srch_value + "% OR "
-                                + "L.notes LIKE %" + textB_srch_value + "% OR "
-                                + "L.transit LIKE %" + textB_srch_value + "% OR "
-                                + "L.access LIKE %" + textB_srch_value + "% OR "
-                                + "L.interaction LIKE %" + textB_srch_value + "% OR "
-                                + "L.house_rules LIKE %" + textB_srch_value + "% OR "
-                                + "L.picture_url LIKE %" + textB_srch_value + "% OR "
-                                + "L.host_id LIKE %" + textB_srch_value + "% OR "
-                                + "L.neighbourhood LIKE %" + textB_srch_value + "% OR "
-                                + "L.latitude LIKE %" + textB_srch_value + "% OR "
-                                + "L.longitude LIKE %" + textB_srch_value + "% OR "
-                                + "L.minimum_nights LIKE %" + textB_srch_value + "% OR "
-                                + "L.maximum_nights LIKE %" + textB_srch_value + "%";
-                    MessageBox.Show(sql);
-                    this.AUD(sql, 0);
-                    Bttn_srch.IsEnabled = false;
-                    Bttn_dlet.IsEnabled = true;
->>>>>>> 65b273a47a74ec65f83e2a2a219599e2dd0d385e
                     break;
                 case "Host":
                     sql = "SELECT * FROM Host_table H WHERE H.host_id LIKE '%" + textB_srch_value + "%' OR "

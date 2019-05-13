@@ -312,7 +312,33 @@ namespace Proj
             switch (mode)
             {
                 case "Listing":
-
+                    List<Listing> listingList = new List<Listing>();
+                    while (rd.Read())
+                    {
+                        int listing_id = (System.Convert.ToInt32(rd["listing_id"]));
+                        string listing_url = (rd["listing_url"].ToString());
+                        string listing_name = (rd["listing_name"].ToString());
+                        string summary = (rd["summary"].ToString());
+                        string space = (rd["space"].ToString());
+                        string listing_description = (rd["listing_description"].ToString());
+                        string neighborhood_overview = (rd["neighborhood_overview"].ToString());
+                        string notes = (rd["notes"].ToString());
+                        string transit = (rd["transit"].ToString());
+                        string access = (rd["access"].ToString());
+                        string interaction = (rd["interaction"].ToString());
+                        string house_rules = (rd["house_rules"].ToString());
+                        string picture_url = (rd["picture_url"].ToString());
+                        int host_id = (System.Convert.ToInt32(rd["host_id"]));
+                        string neighborhood = (rd["neighborhood"].ToString());
+                        double latitude = (System.Convert.ToDouble(rd["latitude"].ToString()));
+                        double longitude = (System.Convert.ToDouble(rd["longitude"].ToString()));
+                        int minimum_nights = (System.Convert.ToInt32(rd["minimum_nights"]));
+                        int maximum_nights = (System.Convert.ToInt32(rd["maximum_nights"]));
+                        Listing listing = new Listing(listing_id, listing_url, listing_name, summary, space, listing_description, neighborhood_overview,
+                            notes, transit, access, interaction, house_rules, picture_url, host_id, neighborhood, latitude, longitude, minimum_nights, maximum_nights);
+                        listingList.Add(listing);
+                    }
+                    rd.Close();
                     break;
                 case "Host":
                     break;
@@ -414,26 +440,27 @@ namespace Proj
     }
 
     public class Listing{
-        protected int listing_id;
-        protected string listing_url;
-        protected string listing_name;
-        protected string summary;
-        protected string space;
-        protected string listing_description;
-        protected string neighborhood_overview;
-        protected string notes;
-        protected string transit;
-        protected string access;
-        protected string interaction;
-        protected string house_rules;
-        protected string picture_url;
-        protected int host_id;
-        protected string neighborhood;
-        protected double latitude;
-        protected double longitude;
-        protected int minimum_nights;
-        protected int maximum_nights;
+        int listing_id;
+        string listing_url;
+        string listing_name;
+        string summary;
+        string space;
+        string listing_description;
+        string neighborhood_overview;
+        string notes;
+        string transit;
+        string access;
+        string interaction;
+        string house_rules;
+        string picture_url;
+        int host_id;
+        string neighborhood;
+        double latitude;
+        double longitude;
+        int minimum_nights;
+        int maximum_nights;
         
+        public Listing() { }
         public Listing(int listing_id,
         string listing_url,string listing_name,string summary,string space,string listing_description,string neighborhood_overview,
         string notes,string transit,string access,string interaction,string house_rules,string picture_url,int host_id,string neighborhood,

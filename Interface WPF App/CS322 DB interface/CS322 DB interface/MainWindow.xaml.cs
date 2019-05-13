@@ -39,6 +39,7 @@ namespace Proj
             table_queries = new string[] { "Select cheapest listing on certain date", "Average price of house with certain number of certain rooms" };
             table_regionChoice = new string[] { "El Raval", "El Poblenou", "L'Antiga Esquerra de l'Eixample", "El Born" };
             DataContext = this;
+
             DatabaseConnect();
         }
 
@@ -143,6 +144,7 @@ namespace Proj
 
 
 
+
         private void DatabaseConnect()
         {
             string connectionstring = "SERVER=localhost;DATABASE=airbnb;UID=root;PASSWORD=yh19981118";
@@ -150,10 +152,6 @@ namespace Proj
             airbnbConnection.Open();
         }
 
-        private void DatabaseClose()
-        {
-            airbnbConnection.Close();
-        }
 
         public void InsertTable(object sender, RoutedEventArgs e)
         {
@@ -437,7 +435,11 @@ namespace Proj
 
         }
 
-    }
+        private void moreInfo_Click(object sender, RoutedEventArgs e)
+        {
+
+
+    	}
 
     public class Listing{
         int listing_id;

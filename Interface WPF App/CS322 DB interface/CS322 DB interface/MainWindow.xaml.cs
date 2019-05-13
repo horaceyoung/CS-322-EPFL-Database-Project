@@ -26,6 +26,8 @@ namespace Proj
 
         public string[] table_queries { get; set; }
         public string[] table_regionChoice { get; set; }
+        public List<Listing> listingList = new List<Listing>();
+        public List<Host> hostList = new List<Host>();
 
         public MySqlConnection airbnbConnection;
 
@@ -39,6 +41,9 @@ namespace Proj
             table_queries = new string[] { "Select cheapest listing on certain date", "Average price of house with certain number of certain rooms" };
             table_regionChoice = new string[] { "El Raval", "El Poblenou", "L'Antiga Esquerra de l'Eixample", "El Born" };
             DataContext = this;
+
+            DisplayListing.ItemsSource = listingList;
+            
 
             DatabaseConnect();
         }
@@ -311,7 +316,6 @@ namespace Proj
             switch (mode)
             {
                 case "Listing":
-                    List<Listing> listingList = new List<Listing>();
                     while (rd.Read())
                     {
                         int listing_id = (System.Convert.ToInt32(rd["listing_id"]));
@@ -340,7 +344,6 @@ namespace Proj
                     rd.Close();
                     break;
                 case "Host":
-                    List<Host> hostList = new List<Host>();
                     while (rd.Read())
                     {
                         Host host = new Host();
@@ -359,6 +362,7 @@ namespace Proj
                     }
                     rd.Close();
                     break;
+                    
                 default:
                     break;
             }
@@ -393,6 +397,15 @@ namespace Proj
                                 + "L.minimum_nights LIKE '%" + textB_srch_value + "%' OR "
                                 + "L.maximum_nights LIKE '%" + textB_srch_value + "%'";
                     this.AUD(sql, "Listing");
+
+
+
+
+
+
+
+
+
                     break;
                 case "Host":
                     sql = "SELECT * FROM Host_table H WHERE H.host_id LIKE '%" + textB_srch_value + "%' OR "
@@ -415,6 +428,40 @@ namespace Proj
 
 
         }
+
+        private void moreListingInfo_Click(object sender, RoutedEventArgs e)
+        {
+            Listing lst = DisplayListing.SelectedItem as Listing;
+
+            MessageBox.Show("Listing ID:" + Convert.ToString(lst.listing_id)+"\nListing url:"+lst.listing_url + "\nListing name:" + lst.listing_name + "\nListing Summary:" + lst.summary + "\nListing Description:" + lst.listing_description + "\nListing Neighbourhood Overview:" + lst.neighborhood_overview
+                +"\nListing Notes:" + lst.notes + "\nListing Transit Info:" + lst.transit + "\nListing Access:" + lst.access + "\nListing Interaction Info:" + lst.interaction + "\nListing House Rule:" + lst.house_rules + "\nListing Picture:" + lst.picture_url + "\nListing Picture:" + lst.picture_url + "\nListing Host ID:" + Convert.ToString(lst.host_id)
+                + "\nListing Neighbourhood:" + lst.neighborhood + "\nListing Latitude:" + Convert.ToString(lst.latitude) + "\nListing Longtitude:" + Convert.ToString(lst.longitude) + "\nListing Min. Nights:" + Convert.ToString(lst.minimum_nights) + "\nListing Max. Nights:" + Convert.ToString(lst.maximum_nights));
+
+
+        //    string             public int listing_id;
+        //public string listing_url;
+        //public string listing_name;
+        //public string summary;
+        //public string space;
+        //public string listing_description;
+        //public string neighborhood_overview;
+        //public string notes;
+        //public string transit;
+        //public string access;
+        //public string interaction;
+        //public string house_rules;
+        //public string picture_url;
+        //public int host_id;
+        //public string neighborhood;
+        //public double latitude;
+        //public double longitude;
+        //public int minimum_nights;
+        //public int maximum_nights;
+    }
+
+
+
+
 
         private void Bttn_dlet_Click(object sender, RoutedEventArgs e)
         {
@@ -454,35 +501,32 @@ namespace Proj
 
         }
 
-        private void moreInfo_Click(object sender, RoutedEventArgs e)
-        {
 
-
-        }
 
         public class Listing
         {
-            int listing_id;
-            string listing_url;
-            string listing_name;
-            string summary;
-            string space;
-            string listing_description;
-            string neighborhood_overview;
-            string notes;
-            string transit;
-            string access;
-            string interaction;
-            string house_rules;
-            string picture_url;
-            int host_id;
-            string neighborhood;
-            double latitude;
-            double longitude;
-            int minimum_nights;
-            int maximum_nights;
+            public int listing_id;
+            public string listing_url;
+            public string listing_name;
+            public string summary;
+            public string space;
+            public string listing_description;
+            public string neighborhood_overview;
+            public string notes;
+            public string transit;
+            public string access;
+            public string interaction;
+            public string house_rules;
+            public string picture_url;
+            public int host_id;
+            public string neighborhood;
+            public double latitude;
+            public double longitude;
+            public int minimum_nights;
+            public int maximum_nights;
 
             public Listing() { }
+
             public Listing(int listing_id,
             string listing_url, string listing_name, string summary, string space, string listing_description, string neighborhood_overview,
             string notes, string transit, string access, string interaction, string house_rules, string picture_url, int host_id, string neighborhood,

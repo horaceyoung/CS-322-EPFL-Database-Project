@@ -61,7 +61,8 @@ namespace Proj
 
         private void QuerySelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch (selectQuery.SelectedIndex) {
+            switch (selectQuery.SelectedIndex)
+            {
                 case 1:
                     newQuerySelection(sender, e);
                     firstQuery.Visibility = Visibility.Visible;
@@ -339,6 +340,24 @@ namespace Proj
                     rd.Close();
                     break;
                 case "Host":
+                    List<Host> hostList = new List<Host>();
+                    while (rd.Read())
+                    {
+                        Host host = new Host();
+                        host.host_id = (System.Convert.ToInt32(rd["host_id"]));
+                        host.host_url = (rd["host_url"].ToString());
+                        host.host_name = (rd["host_name"].ToString());
+                        host.host_since = (rd["host_since"].ToString());
+                        host.host_about = (rd["host_about"].ToString());
+                        host.host_response_time = (rd["host_response_time"].ToString());
+                        host.host_response_rate = (rd["host_response_rate"].ToString());
+                        host.host_thumbnail_url = (rd["host_thumbnail_url"].ToString());
+                        host.host_picture_url = (rd["host_picture_url"].ToString());
+                        host.host_neighborhood = (System.Convert.ToInt32(rd["host_neighborhood"].ToString()));
+                        host.host_verifications = (rd["host_verifications"].ToString());
+                        hostList.Add(host);
+                    }
+                    rd.Close();
                     break;
                 default:
                     break;
@@ -439,62 +458,74 @@ namespace Proj
         {
 
 
-    	}
+        }
 
-    public class Listing{
-        int listing_id;
-        string listing_url;
-        string listing_name;
-        string summary;
-        string space;
-        string listing_description;
-        string neighborhood_overview;
-        string notes;
-        string transit;
-        string access;
-        string interaction;
-        string house_rules;
-        string picture_url;
-        int host_id;
-        string neighborhood;
-        double latitude;
-        double longitude;
-        int minimum_nights;
-        int maximum_nights;
-        
-        public Listing() { }
-        public Listing(int listing_id,
-        string listing_url,string listing_name,string summary,string space,string listing_description,string neighborhood_overview,
-        string notes,string transit,string access,string interaction,string house_rules,string picture_url,int host_id,string neighborhood,
-        double latitude,double longitude, int minimum_nights, int maximum_nights)
+        public class Listing
         {
-            this.listing_id = listing_id;
-            this.listing_url = listing_url;
-            this.listing_name = listing_name;
-            this.summary = summary;
-            this.space = space;
-            this.listing_description = listing_description;
-            this.neighborhood_overview = neighborhood_overview;
-            this.notes = notes;
-            this.transit = transit;
-            this.access = access;
-            this.interaction = interaction;
-            this.house_rules = house_rules;
-            this.picture_url = picture_url;
-            this.host_id = host_id;
-            this.neighborhood = neighborhood;
-            this.latitude = latitude;
-            this.longitude = longitude;
-            this.minimum_nights = minimum_nights;
-            this.maximum_nights = maximum_nights;
+            int listing_id;
+            string listing_url;
+            string listing_name;
+            string summary;
+            string space;
+            string listing_description;
+            string neighborhood_overview;
+            string notes;
+            string transit;
+            string access;
+            string interaction;
+            string house_rules;
+            string picture_url;
+            int host_id;
+            string neighborhood;
+            double latitude;
+            double longitude;
+            int minimum_nights;
+            int maximum_nights;
+
+            public Listing() { }
+            public Listing(int listing_id,
+            string listing_url, string listing_name, string summary, string space, string listing_description, string neighborhood_overview,
+            string notes, string transit, string access, string interaction, string house_rules, string picture_url, int host_id, string neighborhood,
+            double latitude, double longitude, int minimum_nights, int maximum_nights)
+            {
+                this.listing_id = listing_id;
+                this.listing_url = listing_url;
+                this.listing_name = listing_name;
+                this.summary = summary;
+                this.space = space;
+                this.listing_description = listing_description;
+                this.neighborhood_overview = neighborhood_overview;
+                this.notes = notes;
+                this.transit = transit;
+                this.access = access;
+                this.interaction = interaction;
+                this.house_rules = house_rules;
+                this.picture_url = picture_url;
+                this.host_id = host_id;
+                this.neighborhood = neighborhood;
+                this.latitude = latitude;
+                this.longitude = longitude;
+                this.minimum_nights = minimum_nights;
+                this.maximum_nights = maximum_nights;
+            }
+        }
+
+        public class Host
+        {
+            public int host_id;
+            public string host_url;
+            public string host_name;
+            public string host_since;
+            public string host_about;
+            public string host_response_time;
+            public string host_response_rate;
+            public string host_thumbnail_url;
+            public string host_picture_url;
+            public int host_neighborhood;
+            public string host_verifications;
+
+            public Host() { }
         }
     }
-
-    public class Host
-    {
-        
-    }
-
-
 }
 

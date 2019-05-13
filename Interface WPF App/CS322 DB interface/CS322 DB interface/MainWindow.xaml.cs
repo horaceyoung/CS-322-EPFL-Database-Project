@@ -335,25 +335,26 @@ namespace Proj
             switch (tableName)
             {
                 case "Listing":
-                    String sql = "SELECT * FROM Listing L WHERE L.id LIKE " + textB_srch_value
-                                + "L.listing_url LIKE " + textB_srch_value
-                                + "L.name LIKE " + textB_srch_value
-                                + "L.summary LIKE " + textB_srch_value
-                                + "L.space LIKE " + textB_srch_value
-                                + "L.description LIKE " + textB_srch_value
-                                + "L.neighbourhood_overview LIKE " + textB_srch_value
-                                + "L.notes LIKE " + textB_srch_value
-                                + "L.transit LIEK " + textB_srch_value
-                                + "L.access LIKE " + textB_srch_value
-                                + "L.interaction LIEK " + textB_srch_value
-                                + "L.house_rules LIKE " + textB_srch_value
-                                + "L.picture_url LIKE " + textB_srch_value
-                                + "L.host_id LIKE " + textB_srch_value
-                                + "L.neighbourhood LIKE " + textB_srch_value
-                                + "L.latitude LIKE " + textB_srch_value
-                                + "L.longitude LIKE " + textB_srch_value
-                                + "L.minimum_nights LIKE " + textB_srch_value
-                                + "L.maximum_nights LIKE " + textB_srch_value;
+                    String sql = "SELECT * FROM Host L WHERE L.listing_id LIKE %" + textB_srch_value + "% OR "
+                                + "L.listing_url LIKE %" + textB_srch_value + "% OR "
+                                + "L.listing_name LIKE %" + textB_srch_value + "% OR "
+                                + "L.summary LIKE %" + textB_srch_value + "% OR "
+                                + "L.space LIKE %" + textB_srch_value + "% OR "
+                                + "L.listing_description LIKE %" + textB_srch_value + "% OR "
+                                + "L.neighbourhood_overview LIKE %" + textB_srch_value + "% OR "
+                                + "L.notes LIKE %" + textB_srch_value + "% OR "
+                                + "L.transit LIKE %" + textB_srch_value + "% OR "
+                                + "L.access LIKE %" + textB_srch_value + "% OR "
+                                + "L.interaction LIKE %" + textB_srch_value + "% OR "
+                                + "L.house_rules LIKE %" + textB_srch_value + "% OR "
+                                + "L.picture_url LIKE %" + textB_srch_value + "% OR "
+                                + "L.host_id LIKE %" + textB_srch_value + "% OR "
+                                + "L.neighbourhood LIKE %" + textB_srch_value + "% OR "
+                                + "L.latitude LIKE %" + textB_srch_value + "% OR "
+                                + "L.longitude LIKE %" + textB_srch_value + "% OR "
+                                + "L.minimum_nights LIKE %" + textB_srch_value + "% OR "
+                                + "L.maximum_nights LIKE %" + textB_srch_value + "%";
+                    MessageBox.Show(sql);
                     this.AUD(sql, 0);
                     Bttn_srch.IsEnabled = false;
                     Bttn_dlet.IsEnabled = true;

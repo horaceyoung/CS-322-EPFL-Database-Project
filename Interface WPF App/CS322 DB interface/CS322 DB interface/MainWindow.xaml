@@ -44,17 +44,18 @@
                             </Grid>
 
                             <Grid Visibility="Visible">
-                                <DataGrid Name="DisplayListing"  Margin="80 30 80 0" Height="300" Background="Beige" AutoGenerateColumns="False">
+                                <DataGrid Name="DisplayListing"  Margin="80 60 80 0" Height="300" Background="Beige" AutoGenerateColumns="False">
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Name="moreListingInfo" Click="moreListingInfo_Click" Content="More Information"/>
+                                                <Button Name="moreListingInfo"  Click="moreListingInfo_Click" 
+                                                        Content="More Information"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                        
-                                    <DataGridTextColumn Header ="Listing ID" Binding="{Binding ListingID}"/>
-                                    <DataGridTextColumn Header ="Listing Name" Binding="{Binding ListingName}"/>
+
+                                    <DataGridTextColumn Header ="Listing ID" Binding="{Binding listing_id}"/>
+                                    <DataGridTextColumn Header ="Listing Name" Binding="{Binding listing_name}"/>
 
                                 </DataGrid>
                             </Grid>
@@ -63,7 +64,7 @@
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Name="moreHostInfo" Click="moreHostInfo_Click" Content="More Information"/>
+                                                <Button Name="moreHostInfo" Content="More Information"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
@@ -366,13 +367,20 @@
                                 <TextBlock Text="Select Query" Grid.Column="0" Grid.Row="0" FontSize="15" Margin="20 0 0 0" VerticalAlignment="Bottom"/>
                                 <ComboBox Background="Beige" Grid.Column="1" Width="200"   Text="Select Query" VerticalAlignment="Bottom" FontSize="15" Margin="100 0 0 0" Name="selectQuery" ItemsSource="{Binding table_queries}" SelectionChanged="QuerySelectionChanged"/>
                             </Grid>
-                            <Grid x:Name="firstQuery" Visibility="Visible" Grid.Row="1" Margin="20 0 0 0" VerticalAlignment="Bottom">
+                            <Grid x:Name="firstQuery" Visibility="Collapsed" Grid.Row="1" Margin="20 0 0 0" VerticalAlignment="Bottom">
+                                <TextBlock Text="Cheapest listing on " FontSize="15"/>
+                                <DatePicker Background="Beige" Margin="150 0 150 0"/>
+                                <TextBlock Text="in" Margin="250 0 0 0" FontSize="15"/>
+                                <ComboBox Background="Beige" Margin="280 0 0 0" ItemsSource="{Binding table_regionChoice}"/>
+                            </Grid>
+                            <Grid x:Name="secondQuery" Visibility="Visible" Grid.Row="1" Margin="20 0 0 0" VerticalAlignment="Bottom">
                                 <TextBlock Text="Cheapest listing on " FontSize="15"/>
                                 <DatePicker Background="Beige" Margin="150 0 150 0"/>
                                 <TextBlock Text="in" Margin="250 0 0 0" FontSize="15"/>
                                 <ComboBox Background="Beige" Margin="280 0 0 0" ItemsSource="{Binding table_regionChoice}"/>
                             </Grid>
                         </Grid>
+                        
                     </TabItem>
 
 

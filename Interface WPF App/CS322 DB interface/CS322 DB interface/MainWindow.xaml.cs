@@ -26,6 +26,8 @@ namespace Proj
 
         public string[] table_queries { get; set; }
         public string[] table_regionChoice { get; set; }
+        public string[] table_rooms { get; set; }
+        public string[] table_numberSelection { get; set; }
         public List<Listing> listingList = new List<Listing>();
         public List<Host> hostList = new List<Host>();
 
@@ -38,8 +40,10 @@ namespace Proj
 
             table_names = new string[] { "Listing", "Host", "Country", "Score" };
 
-            table_queries = new string[] { "Select cheapest listing on certain date", "Average price of house with certain number of certain rooms" };
+            table_queries = new string[] { "Select cheapest listing on certain date", "Average price of house with certain number of certain rooms","" };
             table_regionChoice = new string[] { "El Raval", "El Poblenou", "L'Antiga Esquerra de l'Eixample", "El Born" };
+            table_rooms = new string[] { "bedrooms", "bathrooms" };
+            table_numberSelection = new string[] {"0","1","2","3","4","5","6"};
             DataContext = this;
 
             DisplayListing.ItemsSource = listingList;
@@ -151,12 +155,12 @@ namespace Proj
 
 
 
-        private void DatabaseConnect()
-        {
-            string connectionstring = "SERVER=localhost;DATABASE=airbnb;UID=root;PASSWORD=yh19981118";
-            airbnbConnection = new MySqlConnection(connectionstring);
-            airbnbConnection.Open();
-        }
+        //private void DatabaseConnect()
+        //{
+        //    string connectionstring = "SERVER=localhost;DATABASE=airbnb;UID=root;PASSWORD=yh19981118";
+        //    airbnbConnection = new MySqlConnection(connectionstring);
+        //    airbnbConnection.Open();
+        //}
 
 
         public void InsertTable(object sender, RoutedEventArgs e)

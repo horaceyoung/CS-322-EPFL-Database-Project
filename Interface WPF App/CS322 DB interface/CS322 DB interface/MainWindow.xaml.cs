@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using System.Globalization;
 
 namespace Proj
 {
@@ -26,8 +27,10 @@ namespace Proj
 
         public string[] table_queries { get; set; }
         public string[] table_regionChoice { get; set; }
-        public string[] table_rooms { get; set; }
         public string[] table_numberSelection { get; set; }
+        public string[] table_BedroomNumber { get; set; }
+        public string[] table_RoomType { get; set; }
+        public string[] table_accommodates { get; set; }
         public List<Listing> listingList = new List<Listing>();
         public List<Host> hostList = new List<Host>();
 
@@ -39,11 +42,12 @@ namespace Proj
             InitializeComponent();
 
             table_names = new string[] { "Listing", "Host", "Country", "Score" };
-
-            table_queries = new string[] { "Select cheapest listing on certain date", "Average price of house with certain number of certain rooms","" };
-            table_regionChoice = new string[] { "El Raval", "El Poblenou", "L'Antiga Esquerra de l'Eixample", "El Born" };
-            table_rooms = new string[] { "bedrooms", "bathrooms" };
+            table_BedroomNumber = new string[] { "1", "2", "3", "4", "5" };
+            table_queries = new string[] { "Select cheapest listing on certain date in certain neighborhood", "Average price of houses with certain number of bedrooms, with certain room type", "Cheapest house available at certain date, with certain number of accommodates" };
+            table_regionChoice = new string[] { "El Raval", "El Poblenou", "L'Antiga Esquerra de l'Eixample", "El Born", "Prenzlauer Berg"};
+            table_RoomType = new string[] { "Entire home/apt", "Private room", "Shared room" };
             table_numberSelection = new string[] {"0","1","2","3","4","5","6"};
+            table_accommodates = new string[] { "0", "1", "2", "3", "4", "5", "6" };
             DataContext = this;
 
             DisplayListing.ItemsSource = listingList;
@@ -70,11 +74,27 @@ namespace Proj
 
         private void QuerySelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch (selectQuery.SelectedIndex)
+            switch (selectQuery.SelectedItem)
             {
-                case 1:
+                case "Select cheapest listing on certain date in certain neighborhood":
                     newQuerySelection(sender, e);
                     firstQuery.Visibility = Visibility.Visible;
+                    secondQuery.Visibility = Visibility.Collapsed;
+                    thirdQuery.Visibility = Visibility.Collapsed;
+                    break;
+                case "Average price of houses with certain number of bedrooms, with certain room type":
+                    newQuerySelection(sender, e);
+                    firstQuery.Visibility = Visibility.Collapsed;
+                    secondQuery.Visibility = Visibility.Visible;
+                    thirdQuery.Visibility = Visibility.Collapsed;
+
+                    break;
+                case "Cheapest house available at certain date, with certain number of accommodates":
+                    newQuerySelection(sender, e);
+                    firstQuery.Visibility = Visibility.Collapsed;
+                    secondQuery.Visibility = Visibility.Collapsed;
+                    thirdQuery.Visibility = Visibility.Visible;
+             
                     break;
             }
         }
@@ -155,12 +175,12 @@ namespace Proj
 
 
 
-        //private void DatabaseConnect()
-        //{
-        //    string connectionstring = "SERVER=localhost;DATABASE=airbnb;UID=root;PASSWORD=yh19981118";
-        //    airbnbConnection = new MySqlConnection(connectionstring);
-        //    airbnbConnection.Open();
-        //}
+        private void DatabaseConnect()
+        {
+            string connectionstring = "SERVER=localhost;DATABASE=airbnb;UID=root;PASSWORD=yh19981118";
+            airbnbConnection = new MySqlConnection(connectionstring);
+            airbnbConnection.Open();
+        }
 
 
         public void InsertTable(object sender, RoutedEventArgs e)
@@ -464,7 +484,73 @@ namespace Proj
     }
 
 
+        private void querySubmitBtn_clicked(object sender, RoutedEventArgs e) {
 
+        
+        }
+
+        private void Bttn_query_Click(object sender, RoutedEventArgs e)
+        {
+
+            string tableName = selectQuery.Text;
+            MySqlCommand cmd;
+            DisplayQueryResult.Visibility = Visibility.Visible;
+            switch (tableName)
+            {
+                case "Average price of houses with certain number of bedrooms, with certain room type":
+                    string sql;
+                    string query_bed = bedroomNumber.Text;
+                    string query_type = RoomType.Text;
+                    sql = "select avg(P.price) from room_type R, House_Details H, Price P where H.listing_id=P.listing_id and H.room_type=R.room_type_id and R.room_type_name='"
+                    + query_type + "' and " + "H.bedrooms=" + query_bed;
+                    cmd = new MySqlCommand(sql, airbnbConnection);
+                    MessageBox.Show(sql);
+                    DataTable dt2 = new DataTable();
+                    dt2.Load(cmd.ExecuteReader());
+                    DisplayQueryResult.DataContext = dt2;
+                    break;
+
+                case "Cheapest house available at certain date, with certain number of accommodates":
+                    string sql1;
+                    string query_ds = DateStart.Text;
+                    string result_ds = DateConvert(query_ds);
+                    string query_de = DateEnd.Text;
+                    string result_de = DateConvert(query_de);
+                    string query_ac = accommodates.Text;
+                    sql1 = "select H.listing_id from calendar C, House_Details H, Price P where H.listing_id = C.listing_id and (C.calendar_date between '"
+                    + result_ds + "' and '" + result_de + "') and C.availability = 't' and H.accommodates="
+                           + query_ac + " and P.listing_id=H.listing_id order by P.price asc limit 1;";
+                    cmd = new MySqlCommand(sql1, airbnbConnection);
+                    MessageBox.Show(sql1);
+                    DataTable dt3 = new DataTable();
+                    dt3.Load(cmd.ExecuteReader());
+                    DisplayQueryResult.DataContext = dt3;
+                    break;
+
+                case "Select cheapest listing on certain date in certain neighborhood":
+                    string query_date =firstQueryDate.Text;
+                    string result = DateConvert(query_date);
+                    string query_neigh = firstQueryNeigh.Text;
+                    sql = "select L.listing_id, C.price from calendar C, listing L, neighborhood N where C.calendar_date='"
+                    + result + "' and C.availability='t' and L.neighborhood=N.neighborhood_id and L.listing_id=C.listing_id and N.neighborhood_name='"
+                    + query_neigh + "' order by price asc limit 1";
+                    cmd = new MySqlCommand(sql, airbnbConnection);
+                    MessageBox.Show(sql);
+                    DataTable dt = new DataTable();
+                    dt.Load(cmd.ExecuteReader());
+                    DisplayQueryResult.DataContext = dt;
+                    break;
+            }
+
+        }
+
+
+        private string DateConvert(string date)
+        {
+            List<String> values = date.Split('/').ToList();
+            string result = values[2] + "-" + values[1] + "-" + values[0];
+            return result;
+        }
 
 
         private void Bttn_dlet_Click(object sender, RoutedEventArgs e)

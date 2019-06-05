@@ -45,18 +45,20 @@
 
                             <Grid Visibility="Visible">
                                 <DataGrid Name="DisplayListing"  Margin="80 60 80 0" Height="300" Background="Beige" AutoGenerateColumns="False">
-                                    <DataGridTemplateColumn>
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <Button Name="moreListingInfo"  Click="moreListingInfo_Click" 
-                                                        Content="More Information"/>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn>
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Name="moreListingInfo"  Click="moreListingInfo_Click" 
+                                                            Content="More Information"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                           
+                                    
                                     <DataGridTextColumn Header ="Listing ID" Binding="{Binding listing_id}"/>
                                     <DataGridTextColumn Header ="Listing Name" Binding="{Binding listing_name}"/>
-
+                                    </DataGrid.Columns>
                                 </DataGrid>
                             </Grid>
                             <Grid Visibility="Collapsed">
@@ -353,34 +355,54 @@
 
                         <Grid x:Name="PredefinedQuery" Visibility="Visible">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="400"/>
                                 <ColumnDefinition Width="800"/>
+                                <ColumnDefinition Width="400"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="50"/>
                                 <RowDefinition Height="50"/>
                                 <RowDefinition Height="50"/>
-                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <Grid>
                                 <TextBlock Text="Select Query" Grid.Column="0" Grid.Row="0" FontSize="15" Margin="20 0 0 0" VerticalAlignment="Bottom"/>
-                                <ComboBox Background="Beige" Grid.Column="1" Width="200"   Text="Select Query" VerticalAlignment="Bottom" FontSize="15" Margin="100 0 0 0" Name="selectQuery" ItemsSource="{Binding table_queries}" SelectionChanged="QuerySelectionChanged"/>
+                                <ComboBox Background="Beige" Grid.Column="1" Width="200"   Text="Select Query" VerticalAlignment="Bottom" FontSize="15" Margin="100 0 300 0" Name="selectQuery" ItemsSource="{Binding table_queries}" SelectionChanged="QuerySelectionChanged"/>
                             </Grid>
                             <Grid x:Name="firstQuery" Visibility="Collapsed" Grid.Row="1" Margin="20 0 0 0" VerticalAlignment="Bottom">
                                 <TextBlock Text="Cheapest listing on " FontSize="15"/>
-                                <DatePicker Background="Beige" Margin="150 0 150 0"/>
+                                <DatePicker x:Name="firstQueryDate" Background="Beige" Margin="150 0 550 0" SelectedDate="{Binding PropertyName, StringFormat='yyyy-MM-dd'}"/>
                                 <TextBlock Text="in" Margin="250 0 0 0" FontSize="15"/>
-                                <ComboBox Background="Beige" Margin="280 0 0 0" ItemsSource="{Binding table_regionChoice}"/>
+                                <ComboBox x:Name="firstQueryNeigh" Background="Beige" Margin="280 0 300 0" ItemsSource="{Binding table_regionChoice}"/>
                             </Grid>
-                            <Grid x:Name="secondQuery" Visibility="Visible" Grid.Row="1" Margin="20 0 0 0" VerticalAlignment="Bottom">
-                                <TextBlock Text="Cheapest listing on " FontSize="15"/>
-                                <DatePicker Background="Beige" Margin="150 0 150 0"/>
-                                <TextBlock Text="in" Margin="250 0 0 0" FontSize="15"/>
-                                <ComboBox Background="Beige" Margin="280 0 0 0" ItemsSource="{Binding table_regionChoice}"/>
+                            <Grid x:Name="secondQuery" Visibility="Collapsed" Grid.Row="1" Grid.Column="0" Margin="20 0 0 0" VerticalAlignment="Bottom">
+                                <TextBlock Text="The average price of listings with" FontSize="15" Margin="0 5 0 0"/>
+                                <ComboBox x:Name="bedroomNumber" Background="Beige" Margin="230 0 450 0" ItemsSource="{Binding table_BedroomNumber}"/>
+                                <TextBlock Text="bedroom(s), which is of room type" Margin="340 5 0 0" FontSize="15"/>
+                                <ComboBox x:Name="RoomType" Background="Beige" Margin="580 0 80 0" ItemsSource="{Binding table_RoomType}"/>
                             </Grid>
-                        </Grid>
-                        
+                            <Grid  Grid.Column="1" Grid.Row="3">
+                                <Button x:Name="querySubmitBtn" Content="Submit" Margin="0 0 200 0" Click="Bttn_query_Click"/>
+                            </Grid>
+                            <Grid x:Name="thirdQuery" Visibility="Collapsed" Grid.Row="1" Grid.Column="0" Margin="20 0 0 0" VerticalAlignment="Bottom">
+                                <TextBlock Text="The cheapeast listing with" FontSize="15" Margin="0 5 0 0"/>
+                                <ComboBox x:Name="accommodates" Background="Beige" Margin="180 0 520 0" ItemsSource="{Binding table_accommodates}"/>
+                                <TextBlock Text="accomodates between" Margin="270 5 0 0" FontSize="15"/>
+                                <DatePicker x:Name="DateStart" Background="Beige" Margin="430 0 270 0"/>
+                                <TextBlock Text="and" Margin="520 5 0 0" FontSize="15"/>
+                                <DatePicker x:Name="DateEnd" Background="Beige" Margin="560 0 140 0"/>
+
+                            </Grid>
+                            <Grid Grid.Column="0" Grid.Row="4">
+                                <DataGrid Name="DisplayQueryResult" Visibility="Collapsed" Background="Beige" ItemsSource="{Binding}">
+ 
+                                </DataGrid>
+
+
+                            </Grid>
+
+                            </Grid>
+
                     </TabItem>
 
 

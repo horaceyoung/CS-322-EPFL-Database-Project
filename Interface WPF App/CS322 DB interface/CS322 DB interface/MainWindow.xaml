@@ -42,10 +42,25 @@
                                 <TextBox Name="TextB_srch" Padding="2" Grid.Column="1" Margin="80 10 10 0" IsReadOnly="False" Background="Beige"/>
                                 <Button Name="Bttn_srch" Margin="10 10 190 0" Grid.Column="2" Content=" Search " Click="BttnSrchClick"/>
                             </Grid>
+                            <Grid>
 
-                            <Grid Visibility="Visible">
-                                <DataGrid Name="DisplayListing"  Margin="80 60 80 0" Height="300" Background="Beige" ItemsSource="{Binding listingDT}" DataContext="{Binding listingDT}" AutoGenerateColumns="True">
-                                </DataGrid>
+                                <Grid Margin="200 0 0 0">
+                                    <DataGrid Name="DisplayListing"  Margin="80 60 190 0" Height="300" Background="Beige" ItemsSource="{Binding listingDT}" DataContext="{Binding listingDT}" AutoGenerateColumns="True">
+                                    </DataGrid>
+                                </Grid>
+                                
+                                <Grid>
+                                    <DataGrid Name="DisplayListingButton"  Margin="80 60 850 0" Height="300" Background="Beige" AutoGenerateColumns="False">
+                                        <DataGridTemplateColumn>
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Name="moreListingInfo"  Click="moreListingInfo_Click" 
+                                                        Content="More Information"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid>
+                                </Grid>
                             </Grid>
                             <Grid Visibility="Collapsed">
                                 <DataGrid Name="DisplayHost"  Margin="80 30 80 0" Height="300" Background="Beige" ItemsSource="{Binding}">

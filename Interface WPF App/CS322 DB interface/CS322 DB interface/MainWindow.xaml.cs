@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Globalization;
+using System.Collections.ObjectModel;
 
 namespace Proj
 {
@@ -31,7 +32,7 @@ namespace Proj
         public string[] table_BedroomNumber { get; set; }
         public string[] table_RoomType { get; set; }
         public string[] table_accommodates { get; set; }
-        public List<Listing> listingList = new List<Listing>();
+        public List<Listing> listingList = new List< Listing>();
         public List<Host> hostList = new List<Host>();
 
         public MySqlConnection airbnbConnection;
@@ -49,9 +50,6 @@ namespace Proj
             table_numberSelection = new string[] {"0","1","2","3","4","5","6"};
             table_accommodates = new string[] { "0", "1", "2", "3", "4", "5", "6" };
             DataContext = this;
-
-            DisplayListing.ItemsSource = listingList;
-            
 
             DatabaseConnect();
         }
@@ -359,13 +357,27 @@ namespace Proj
                         string neighborhood = (rd["neighborhood"].ToString());
                         double latitude = (System.Convert.ToDouble(rd["latitude"].ToString()));
                         double longitude = (System.Convert.ToDouble(rd["longitude"].ToString()));
-                        int minimum_nights = (System.Convert.ToInt32(rd["minimum_nights"]));
-                        int maximum_nights = (System.Convert.ToInt32(rd["maximum_nights"]));
+                        //int minimum_nights = (System.Convert.ToInt32(rd["minimum_nights"]));
+                        //int maximum_nights = (System.Convert.ToInt32(rd["maximum_nights"]));
                         Listing listing = new Listing(listing_id, listing_url, listing_name, summary, space, listing_description, neighborhood_overview,
-                            notes, transit, access, interaction, house_rules, picture_url, host_id, neighborhood, latitude, longitude, minimum_nights, maximum_nights);
+                            notes, transit, access, interaction, house_rules, picture_url, host_id, neighborhood, latitude, longitude, 0, 0);
                         listingList.Add(listing);
                     }
                     rd.Close();
+
+                    DataTable listingDT = new DataTable();
+                    listingDT.Columns.Add("listing_id");
+                    listingDT.Columns.Add("listing_name");
+                    listingDT.Columns.Add("more_info");
+                    foreach(Listing lst in listingList){
+                        DataRow row = listingDT.NewRow();
+                        row["listing_id"] = lst.listing_id;
+                        row["listing_name"] = lst.listing_name;
+                        row["more_info"] = lst.btn;
+                        listingDT.Rows.Add(row);
+                    }
+                    //DisplayListing.DataContext = listingDT.DefaultView;
+                    
                     break;
                 case "Host":
                     while (rd.Read())
@@ -421,15 +433,6 @@ namespace Proj
                                 + "L.minimum_nights LIKE '%" + textB_srch_value + "%' OR "
                                 + "L.maximum_nights LIKE '%" + textB_srch_value + "%'";
                     this.AUD(sql, "Listing");
-
-
-
-
-
-
-
-
-
                     break;
                 case "Host":
                     sql = "SELECT * FROM Host_table H WHERE H.host_id LIKE '%" + textB_srch_value + "%' OR "
@@ -460,7 +463,6 @@ namespace Proj
             MessageBox.Show("Listing ID:" + Convert.ToString(lst.listing_id)+"\nListing url:"+lst.listing_url + "\nListing name:" + lst.listing_name + "\nListing Summary:" + lst.summary + "\nListing Description:" + lst.listing_description + "\nListing Neighbourhood Overview:" + lst.neighborhood_overview
                 +"\nListing Notes:" + lst.notes + "\nListing Transit Info:" + lst.transit + "\nListing Access:" + lst.access + "\nListing Interaction Info:" + lst.interaction + "\nListing House Rule:" + lst.house_rules + "\nListing Picture:" + lst.picture_url + "\nListing Picture:" + lst.picture_url + "\nListing Host ID:" + Convert.ToString(lst.host_id)
                 + "\nListing Neighbourhood:" + lst.neighborhood + "\nListing Latitude:" + Convert.ToString(lst.latitude) + "\nListing Longtitude:" + Convert.ToString(lst.longitude) + "\nListing Min. Nights:" + Convert.ToString(lst.minimum_nights) + "\nListing Max. Nights:" + Convert.ToString(lst.maximum_nights));
-
 
         //    string             public int listing_id;
         //public string listing_url;
@@ -569,7 +571,6 @@ namespace Proj
                 case "Host":
                     sql = "DELETE FROM Host_table WHERE Host_table.host_id = " + textB_dlet_value;
                     cmd = new MySqlCommand(sql, airbnbConnection);
-                    MessageBox.Show(sql);
                     cmd.ExecuteNonQuery();
                     break;
                 case "Country":
@@ -614,6 +615,8 @@ namespace Proj
             public double longitude;
             public int minimum_nights;
             public int maximum_nights;
+            public Button btn = new Button();
+            
 
             public Listing() { }
 
@@ -641,6 +644,7 @@ namespace Proj
                 this.longitude = longitude;
                 this.minimum_nights = minimum_nights;
                 this.maximum_nights = maximum_nights;
+               
             }
         }
 

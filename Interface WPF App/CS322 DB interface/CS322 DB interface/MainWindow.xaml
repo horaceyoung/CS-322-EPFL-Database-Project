@@ -38,31 +38,17 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <ComboBox x:Name ="ComboB_srch" Padding="2" Margin="80 10 10 0" Grid.Column="0" ItemsSource="{Binding table_names}"/>
+                                <ComboBox x:Name ="ComboB_srch" Padding="2" Margin="80 10 10 0" Grid.Column="0" ItemsSource="{Binding table_names}" />
                                 <TextBox Name="TextB_srch" Padding="2" Grid.Column="1" Margin="80 10 10 0" IsReadOnly="False" Background="Beige"/>
                                 <Button Name="Bttn_srch" Margin="10 10 190 0" Grid.Column="2" Content=" Search " Click="BttnSrchClick"/>
                             </Grid>
 
                             <Grid Visibility="Visible">
-                                <DataGrid Name="DisplayListing"  Margin="80 60 80 0" Height="300" Background="Beige" AutoGenerateColumns="False">
-                                    <DataGrid.Columns>
-                                        <DataGridTemplateColumn>
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <Button Name="moreListingInfo"  Click="moreListingInfo_Click" 
-                                                            Content="More Information"/>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-                           
-                                    
-                                    <DataGridTextColumn Header ="Listing ID" Binding="{Binding listing_id}"/>
-                                    <DataGridTextColumn Header ="Listing Name" Binding="{Binding listing_name}"/>
-                                    </DataGrid.Columns>
+                                <DataGrid Name="DisplayListing"  Margin="80 60 80 0" Height="300" Background="Beige" ItemsSource="{Binding listingDT}" DataContext="{Binding listingDT}" AutoGenerateColumns="True">
                                 </DataGrid>
                             </Grid>
                             <Grid Visibility="Collapsed">
-                                <DataGrid Name="DisplayHost"  Margin="80 30 80 0" Height="300" Background="Beige" AutoGenerateColumns="False">
+                                <DataGrid Name="DisplayHost"  Margin="80 30 80 0" Height="300" Background="Beige" ItemsSource="{Binding}">
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>

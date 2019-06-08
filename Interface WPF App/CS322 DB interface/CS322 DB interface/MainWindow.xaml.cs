@@ -397,6 +397,20 @@ namespace Proj
                         hostList.Add(host);
                     }
                     rd.Close();
+
+                    DataTable hostDT = new DataTable();
+                    hostDT.Columns.Add("host_id");
+                    hostDT.Columns.Add("host_name");
+                    foreach (Host hst in hostList)
+                    {
+                        DataRow row = hostDT.NewRow();
+                        row["host_id"] = hst.host_id;
+                        row["host_name"] = hst.host_name;
+                        hostDT.Rows.Add(row);
+                    }
+                    MessageBox.Show(hostDT.Rows.Count.ToString());
+                    DisplayHost.DataContext = hostDT.AsDataView();
+                    DisplayHostButton.ItemsSource = hostList;
                     break;
                     
                 default:
@@ -467,27 +481,25 @@ namespace Proj
             MessageBox.Show("Listing ID:" + Convert.ToString(lst.listing_id)+"\nListing url:"+lst.listing_url + "\nListing name:" + lst.listing_name + "\nListing Summary:" + lst.summary + "\nListing Description:" + lst.listing_description + "\nListing Neighbourhood Overview:" + lst.neighborhood_overview
                 +"\nListing Notes:" + lst.notes + "\nListing Transit Info:" + lst.transit + "\nListing Access:" + lst.access + "\nListing Interaction Info:" + lst.interaction + "\nListing House Rule:" + lst.house_rules + "\nListing Picture:" + lst.picture_url + "\nListing Picture:" + lst.picture_url + "\nListing Host ID:" + Convert.ToString(lst.host_id)
                 + "\nListing Neighbourhood:" + lst.neighborhood + "\nListing Latitude:" + Convert.ToString(lst.latitude) + "\nListing Longtitude:" + Convert.ToString(lst.longitude) + "\nListing Min. Nights:" + Convert.ToString(lst.minimum_nights) + "\nListing Max. Nights:" + Convert.ToString(lst.maximum_nights));
+        }
 
-        //    string             public int listing_id;
-        //public string listing_url;
-        //public string listing_name;
-        //public string summary;
-        //public string space;
-        //public string listing_description;
-        //public string neighborhood_overview;
-        //public string notes;
-        //public string transit;
-        //public string access;
-        //public string interaction;
-        //public string house_rules;
-        //public string picture_url;
-        //public int host_id;
-        //public string neighborhood;
-        //public double latitude;
-        //public double longitude;
-        //public int minimum_nights;
-        //public int maximum_nights;
-    }
+        private void moreHostInfo_Click(object sender, RoutedEventArgs e)
+        {
+            Host hst = DisplayHostButton.SelectedItem as Host;
+
+            MessageBox.Show(
+                "Host ID:" + Convert.ToString(hst.host_id) +
+                "\nHost URL:" + hst.host_url +
+                "\nHost Name:" + hst.host_name +
+                "\nHost Since:" + hst.host_since +
+                "\nHost About:" + hst.host_about +
+                "\nHost Response Time:" + hst.host_response_time +
+                "\nHost Response Rate:" + hst.host_response_rate +
+                "\nHost Thumbnail URL:" + hst.host_thumbnail_url +
+                "\nHost Picture URL:" + hst.host_picture_url +
+                "\nHost Neighborhood:" + hst.host_neighborhood +
+                "\nHost Verification:" + hst.host_verifications);
+        }
 
 
         private void querySubmitBtn_clicked(object sender, RoutedEventArgs e) {

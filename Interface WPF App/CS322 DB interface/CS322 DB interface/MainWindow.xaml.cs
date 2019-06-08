@@ -368,16 +368,15 @@ namespace Proj
                     DataTable listingDT = new DataTable();
                     listingDT.Columns.Add("listing_id");
                     listingDT.Columns.Add("listing_name");
-                    listingDT.Columns.Add("more_info");
                     foreach(Listing lst in listingList){
                         DataRow row = listingDT.NewRow();
                         row["listing_id"] = lst.listing_id;
                         row["listing_name"] = lst.listing_name;
-                        row["more_info"] = lst.btn;
                         listingDT.Rows.Add(row);
                     }
-                    //DisplayListing.DataContext = listingDT.DefaultView;
-                    
+                    MessageBox.Show(listingDT.Rows.Count.ToString());
+                    DisplayListing.DataContext = listingDT.AsDataView();
+                    DisplayListingButton.ItemsSource = listingList;
                     break;
                 case "Host":
                     while (rd.Read())
@@ -458,7 +457,7 @@ namespace Proj
 
         private void moreListingInfo_Click(object sender, RoutedEventArgs e)
         {
-            Listing lst = DisplayListing.SelectedItem as Listing;
+            Listing lst = DisplayListingButton.SelectedItem as Listing;
 
             MessageBox.Show("Listing ID:" + Convert.ToString(lst.listing_id)+"\nListing url:"+lst.listing_url + "\nListing name:" + lst.listing_name + "\nListing Summary:" + lst.summary + "\nListing Description:" + lst.listing_description + "\nListing Neighbourhood Overview:" + lst.neighborhood_overview
                 +"\nListing Notes:" + lst.notes + "\nListing Transit Info:" + lst.transit + "\nListing Access:" + lst.access + "\nListing Interaction Info:" + lst.interaction + "\nListing House Rule:" + lst.house_rules + "\nListing Picture:" + lst.picture_url + "\nListing Picture:" + lst.picture_url + "\nListing Host ID:" + Convert.ToString(lst.host_id)

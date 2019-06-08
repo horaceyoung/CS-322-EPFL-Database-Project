@@ -45,20 +45,22 @@
                             <Grid>
 
                                 <Grid Margin="200 0 0 0">
-                                    <DataGrid Name="DisplayListing"  Margin="80 60 190 0" Height="300" Background="Beige" ItemsSource="{Binding listingDT}" DataContext="{Binding listingDT}" AutoGenerateColumns="True">
+                                    <DataGrid Name="DisplayListing"  Margin="80 60 190 0" Height="300" Background="Beige" ItemsSource="{Binding}">
                                     </DataGrid>
                                 </Grid>
                                 
                                 <Grid>
-                                    <DataGrid Name="DisplayListingButton"  Margin="80 60 850 0" Height="300" Background="Beige" AutoGenerateColumns="False">
+                                    <DataGrid Name="DisplayListingButton"  Margin="80 100 850 10" Height="300" Background="Beige" AutoGenerateColumns="False">
+                                        <DataGrid.Columns>
                                         <DataGridTemplateColumn>
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Button Name="moreListingInfo"  Click="moreListingInfo_Click" 
-                                                        Content="More Information"/>
+                                                        Content="More Information" Height="17"/>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
                                     </DataGrid>
                                 </Grid>
                             </Grid>

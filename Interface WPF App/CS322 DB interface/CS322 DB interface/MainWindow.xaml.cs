@@ -378,6 +378,7 @@ namespace Proj
                     DisplayListing.DataContext = listingDT.AsDataView();
                     DisplayListingButton.ItemsSource = listingList;
                     break;
+
                 case "Host":
                     while (rd.Read())
                     {
@@ -412,6 +413,8 @@ namespace Proj
             switch (tableName)
             {
                 case "Listing":
+                    ListingSearch.Visibility = Visibility.Visible;
+                    HostSearch.Visibility = Visibility.Collapsed;
                     string sql = "SELECT * FROM Listing L WHERE L.listing_id LIKE '%" + textB_srch_value + "%' OR "
                                 + "L.listing_url LIKE '%" + textB_srch_value + "%' OR "
                                 + "L.listing_name LIKE '%" + textB_srch_value + "%' OR "
@@ -434,6 +437,8 @@ namespace Proj
                     this.AUD(sql, "Listing");
                     break;
                 case "Host":
+                    HostSearch.Visibility = Visibility.Visible;
+                    ListingSearch.Visibility = Visibility.Collapsed;
                     sql = "SELECT * FROM Host_table H WHERE H.host_id LIKE '%" + textB_srch_value + "%' OR "
                                         + "H.host_url LIKE '%" + textB_srch_value + "%' OR "
                                         + "H.host_name LIKE '%" + textB_srch_value + "%' OR "

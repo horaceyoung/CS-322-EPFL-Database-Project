@@ -42,7 +42,8 @@
                                 <TextBox Name="TextB_srch" Padding="2" Grid.Column="1" Margin="80 10 10 0" IsReadOnly="False" Background="Beige"/>
                                 <Button Name="Bttn_srch" Margin="10 10 190 0" Grid.Column="2" Content=" Search " Click="BttnSrchClick"/>
                             </Grid>
-                            <Grid>
+
+                            <Grid x:Name="ListingSearch" Visibility="Collapsed">
 
                                 <Grid Margin="200 0 0 0">
                                     <DataGrid Name="DisplayListing"  Margin="80 60 190 0" Height="300" Background="Beige" ItemsSource="{Binding}">
@@ -64,20 +65,27 @@
                                     </DataGrid>
                                 </Grid>
                             </Grid>
-                            <Grid Visibility="Collapsed">
-                                <DataGrid Name="DisplayHost"  Margin="80 30 80 0" Height="300" Background="Beige" ItemsSource="{Binding}">
-                                    <DataGridTemplateColumn>
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <Button Name="moreHostInfo" Content="More Information"/>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
+                            
+                            <Grid x:Name="HostSearch" Visibility="Collapsed">
+                                <Grid Margin="200 0 0 0">
+                                    <DataGrid Name="DisplayHost"  Margin="80 60 190 0" Height="300" Background="Beige" ItemsSource="{Binding}">
+                                    </DataGrid>
+                                </Grid>
 
-                                    <DataGridTextColumn Header ="Host ID" Binding="{Binding HostID}"/>
-                                    <DataGridTextColumn Header ="Host Name" Binding="{Binding HostName}"/>
-
-                                </DataGrid>
+                                <Grid>
+                                    <DataGrid Name="DisplayHostButton"  Margin="80 100 850 10" Height="300" Background="Beige" AutoGenerateColumns="False">
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn>
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button Name="moreHostInfo"  Click="moreHostInfo_Click" 
+                                                        Content="More Information" Height="17"/>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </Grid>
 
                             </Grid>
                         </StackPanel>

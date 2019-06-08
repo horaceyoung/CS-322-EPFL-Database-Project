@@ -57,7 +57,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Button Name="moreListingInfo"  Click="moreListingInfo_Click" 
-                                                        Content="More Information" Height="17"/>
+                                                        Content="More Information" Height="17" FontSize="8"/>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
@@ -79,7 +79,7 @@
                                                 <DataGridTemplateColumn.CellTemplate>
                                                     <DataTemplate>
                                                         <Button Name="moreHostInfo"  Click="moreHostInfo_Click" 
-                                                        Content="More Information" Height="17"/>
+                                                        Content="More Information" Height="17" FontSize="8"/>
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellTemplate>
                                             </DataGridTemplateColumn>
